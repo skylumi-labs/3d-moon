@@ -1,0 +1,38 @@
+/* The hidden debug sheet: bottom left, over the picture, scrolls when tall. */
+.debug-sheet {
+  position: fixed; left: calc(12px + env(safe-area-inset-left, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 30;
+  box-sizing: border-box; width: min(360px, calc(100vw - 24px)); max-height: calc(100dvh - 24px - env(safe-area-inset-bottom, 0px)); overflow-y: auto; overscroll-behavior: contain;
+  padding: 10px 14px 12px; color: #e8ecf5; text-shadow: none; pointer-events: auto; font-size: 0.8125rem; line-height: 1.4;
+  background: rgba(10, 12, 16, 0.86); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 18px; scrollbar-width: thin;
+}
+.debug-sheet[hidden] { display: none; }
+.debug-sheet header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+.debug-sheet h2 { margin: 0; font-size: 1rem; font-weight: 600; }
+.debug-sheet h3 { margin: 0 0 6px; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.65; }
+.debug-section { display: grid; gap: 8px; padding: 10px 0 4px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.debug-section:first-of-type { border-top: 0; }
+.debug-sheet button {
+  font: inherit; color: #e8ecf5; cursor: pointer; min-height: 36px; padding: 0 14px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.16); -webkit-tap-highlight-color: transparent;
+}
+.debug-sheet button:disabled { opacity: 0.4; cursor: default; }
+.debug-sheet button[aria-pressed='true'] { background: rgba(169, 200, 245, 0.24); border-color: rgba(169, 200, 245, 0.6); color: #fff; }
+.debug-sheet button:focus-visible, .debug-sheet input:focus-visible { outline: 2px solid #a9c8f5; outline-offset: 2px; }
+.debug-sheet button.debug-toggle { display: grid; justify-items: start; gap: 1px; text-align: left; width: 100%; min-height: 44px; padding: 6px 14px; border-radius: 14px; }
+.debug-toggle small { font-size: 0.6875rem; opacity: 0.7; }
+.debug-slider { display: grid; gap: 4px; }
+.debug-slider-head { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; }
+.debug-slider-value { font-variant-numeric: tabular-nums; font-weight: 400; }
+.debug-slider input[type='range'] { width: 100%; margin: 2px 0; accent-color: #a9c8f5; height: 28px; }
+.debug-note { font-size: 0.6875rem; opacity: 0.7; }
+.debug-sheet .quality-row-head { flex-wrap: wrap; }
+.debug-sheet button.quality-reset { justify-self: start; }
+
+/* On a phone the sheet is a top sheet: the pill and the bar stay uncovered so a slider can be moved while the Moon is watched. */
+@media (max-width: 600px) {
+  .debug-sheet {
+    top: calc(12px + env(safe-area-inset-top, 0px)); bottom: auto; width: calc(100vw - 24px);
+    max-height: calc(100dvh - 250px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  }
+}

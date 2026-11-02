@@ -1,0 +1,18 @@
+.ridge-card {
+  position: fixed; left: 18px; top: 16px; max-width: min(430px, calc(100vw - 36px));
+  font-size: 0.8125rem; line-height: 1.45; pointer-events: none; text-shadow: 0 1px 8px #000; z-index: 5;
+}
+.ridge-card[hidden] { display: none; }
+.ridge-card b { font-weight: 600; }
+.ridge-card .rc-sub { opacity: .62; font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.ridge-card .rc-note { opacity: .5; font-size: 0.6875rem; margin-top: 4px; }
+.ridge-card .rc-row { display: flex; gap: 8px; margin-top: 10px; pointer-events: auto; }
+.ridge-card button {
+  font: inherit; color: #e8ecf5; background: rgba(20, 24, 32, .78); border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 999px; padding: 7px 16px; cursor: pointer; min-height: 36px;
+}
+.ridge-card button.primary { background: rgba(120, 160, 255, .28); border-color: rgba(157, 184, 255, .7); }
+.ridge-card button:hover { background: rgba(60, 70, 96, .85); }
+@media (max-width: 800px) { .ridge-card { left: 14px; top: 12px; font-size: 0.75rem; } }
+/* The ridge view is a picture first: the tour chips wait until the visitor leaves it. */
+body.ridge-on .tour-row, body.ridge-on .tour-card { display: none; }

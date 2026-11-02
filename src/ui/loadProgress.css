@@ -1,0 +1,9 @@
+/* Loading line on the tour card (tours.ts): what has arrived, and the retry after a failure. */
+.tour-progress { display: flex; flex-direction: column; gap: 6px; margin: 6px 0; font-size: 0.75rem; opacity: .9; }
+.tour-progress[hidden], .tour-retry[hidden] { display: none; }
+.tour-progress-bar { display: block; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, .16); overflow: hidden; position: relative; }
+.tour-progress-bar > b { display: block; height: 100%; width: 0; background: #d4e2ff; transition: width .25s linear; }
+.tour-progress-bar.indeterminate > b { position: absolute; width: 35%; animation: tour-progress-slide 1.2s ease-in-out infinite; }
+@keyframes tour-progress-slide { from { left: -35%; } to { left: 100%; } }
+.tour-retry { align-self: flex-start; margin: 4px 0; font: inherit; font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, .35); background: rgba(255, 255, 255, .08); color: inherit; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .tour-progress-bar.indeterminate > b { animation: none; width: 100%; opacity: .5; } }

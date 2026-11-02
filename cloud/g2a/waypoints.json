@@ -1,0 +1,115 @@
+{
+  "_doc": "Source waypoints for the Apollo 17 powered-descent reference track. Times are ALSJ-clock GET 'h:mm:ss' (ALSJ clock = Mission Report clock + 2:40:00). Every row carries provenance: V = verified table/text value read in this session, R = read second-hand (search summary / fetched summary, not re-checked in the original), E = estimated/interpolated (method in note). unc = 1-sigma-ish band, same unit as the value (time bands in s).",
+  "clock": {
+    "alsj_minus_mr_s": 9600,
+    "ignition_alsj": "112:49:53",
+    "ignition_note": "Mission Report (JSC-07904 table 8-VI) ignition 110:09:53 = 112:49:53 ALSJ clock. ALSJ text says 112:49:56 (3 s later); unresolved, MR used because contact 113:01:58 matches MR 110:21:58 and MR lists ignition-to-landing 12:05 = 725 s.",
+    "landing_alsj": "113:01:58",
+    "landing_utc": "1972-12-11T19:54:58Z",
+    "launch_utc": "1972-12-07T05:33:00Z",
+    "utc_check": "launch + 110:21:58 (MR clock) = 1972-12-11T19:54:58Z"
+  },
+  "constants": {
+    "mu_km3_s2": 4902.800066,
+    "r_ref_km": 1737.4,
+    "site_elev_m": -2626,
+    "omega_rad_s": 2.6617e-6,
+    "site_lat_deg": 20.1911,
+    "site_lon_deg": 30.7723,
+    "lm_mass_pdi_lb": 36656,
+    "dv_pdi_fps": 6698,
+    "burn_s": 725,
+    "prop_consumed_lb": 18248.9,
+    "ftp_thrust_lbf": 9710,
+    "min_throttle": 0.10,
+    "orbit_descent_nmi": [59.6, 6.2],
+    "orbit_predoi_nmi": [59.0, 14.5],
+    "doi2_dv_fps": 7,
+    "pdi_alt_ref_nmi": 8.7,
+    "nmi_m": 1852,
+    "ft_m": 0.3048
+  },
+  "altitude_ft": [
+    {"clk": "112:49:53", "note": "PDI: 8.7 nmi (16.1 km) above the reference sphere + 2.626 km site elevation; NOT a direct table value", "prov": "R+E", "h_ft": null},
+    {"clk": "112:51:31", "h_ft": 57000, "prov": "V", "unc_ft": 1500, "src": "ALSJ landing page"},
+    {"clk": "112:52:30", "h_ft": 51500, "prov": "V", "unc_ft": 1500, "src": "ALSJ landing page"},
+    {"clk": "112:53:50", "h_ft": 42000, "prov": "R", "unc_ft": 2000, "unc_t_s": 15, "src": "MR 8.5: radar velocity acquired at about 42,000 ft before the yaw (yaw at 112:54:07 ALSJ; time est)"},
+    {"clk": "112:55:04", "h_ft": 36500, "prov": "V", "unc_ft": 1000, "src": "ALSJ"},
+    {"clk": "112:55:28", "h_ft": 34000, "prov": "V", "unc_ft": 1000, "src": "ALSJ"},
+    {"clk": "112:55:59", "h_ft": 31000, "prov": "V", "unc_ft": 1000, "src": "ALSJ"},
+    {"clk": "112:56:33", "h_ft": 30000, "prov": "V", "unc_ft": 1000, "src": "ALSJ"},
+    {"clk": "112:57:29", "h_ft": 24000, "prov": "V", "unc_ft": 1000, "src": "ALSJ"},
+    {"clk": "112:57:55", "h_ft": 19000, "prov": "V", "unc_ft": 1000, "src": "ALSJ"},
+    {"clk": "112:58:17", "h_ft": 16000, "prov": "V", "unc_ft": 1000, "src": "ALSJ"},
+    {"clk": "112:58:40", "h_ft": 12500, "prov": "V", "unc_ft": 1000, "src": "ALSJ commentary"},
+    {"clk": "112:58:55", "h_ft": 11000, "prov": "V", "unc_ft": 1000, "src": "ALSJ"},
+    {"clk": "112:59:15", "h_ft": 7500, "prov": "V", "unc_ft": 500, "unc_t_s": 3, "src": "MR 10.7: pitchover 'at about 7500 feet'; MR P64 selected 112:59:15 (ALSJ says pitchover 112:59:18). The MR time keeps the descent rate 175 to 182 fps across 11,000 / 7,500 / 5,500 ft; the ALSJ time would need 250 fps"},
+    {"clk": "112:59:26", "h_ft": 5500, "prov": "V", "unc_ft": 300, "src": "ALSJ"},
+    {"clk": "112:59:59", "h_ft": 2250, "prov": "E", "unc_ft": 250, "src": "ALSJ gives 2,500 to 2,000 ft"},
+    {"clk": "113:00:20", "h_ft": 800, "prov": "R", "unc_ft": 200, "unc_t_s": 5, "src": "ALSJ: through 1,000 ft, 800 ft at about 113:00:20"},
+    {"clk": "113:00:32", "h_ft": 500, "prov": "V", "unc_ft": 50, "src": "ALSJ, 31 fps down"},
+    {"clk": "113:00:42", "h_ft": 300, "prov": "V", "unc_ft": 30, "src": "ALSJ, 15 fps down"},
+    {"clk": "113:00:55", "h_ft": 200, "prov": "V", "unc_ft": 30, "src": "ALSJ, 9 fps then 5"},
+    {"clk": "113:01:15", "h_ft": 80, "prov": "V", "unc_ft": 15, "src": "ALSJ 'a little dust' at 80 ft (other lines say 90/60 ft; MR: dust first seen at 60 to 70 ft on the tape meter)"},
+    {"clk": "113:01:43", "h_ft": 25, "prov": "V", "unc_ft": 5, "src": "ALSJ, 2 fps down"},
+    {"clk": "113:01:58", "h_ft": 0, "prov": "V", "unc_ft": 0, "src": "contact light"}
+  ],
+  "rates_check_fps": [
+    {"clk": "113:00:32", "h_ft": 500, "down_fps": 31, "unc": 3, "prov": "V"},
+    {"clk": "113:00:37", "h_ft": 400, "down_fps": 25, "unc": 3, "prov": "V", "note": "time between the 500 and 300 ft calls, est"},
+    {"clk": "113:00:42", "h_ft": 300, "down_fps": 15, "unc": 3, "prov": "V"},
+    {"clk": "113:00:55", "h_ft": 200, "down_fps": 9, "unc": 3, "prov": "V"}
+  ],
+  "pitch_deg": [
+    {"clk": "112:49:53", "psi": 108, "prov": "V", "unc": 2, "src": "ALSJ: measured in the landing-site frame, 0 = vertical (thrust axis)"},
+    {"clk": "112:50:47", "psi": 98, "prov": "V", "unc": 2},
+    {"clk": "112:51:56", "psi": 89, "prov": "V", "unc": 2, "src": "ALSJ 'ball 89 at 2:00'"},
+    {"clk": "112:55:04", "psi": 74, "prov": "V", "unc": 2},
+    {"clk": "112:55:28", "psi": 73, "prov": "V", "unc": 2},
+    {"clk": "112:55:59", "psi": 72, "prov": "V", "unc": 2},
+    {"clk": "112:57:29", "psi": 63, "prov": "V", "unc": 2},
+    {"clk": "112:58:17", "psi": 60, "prov": "V", "unc": 3},
+    {"clk": "112:59:15", "psi": 60, "prov": "V", "unc": 3, "src": "pitchover starts; ALSJ 60 deg to about 20 deg from vertical"}
+  ],
+  "yaw_left_deg": [
+    {"clk": "112:49:53", "yaw": 70, "prov": "V", "src": "ALSJ / MR: yaw 290 deg (= 70 left) before ignition"},
+    {"clk": "112:53:55", "yaw": 70, "prov": "V"},
+    {"clk": "112:54:07", "yaw": 20, "prov": "V", "src": "MR 10.7: yawed 290 -> 340 at 4 min with landing-radar lock"},
+    {"clk": "112:56:33", "yaw": 20, "prov": "V"},
+    {"clk": "112:56:50", "yaw": 0, "prov": "E", "src": "ALSJ: yaw to zero at 112:56:33 for windows up; duration est 17 s"}
+  ],
+  "events": [
+    {"clk": "112:49:45", "ev": "ullage on (RCS)", "prov": "V", "src": "MR table 8-VI 110:09:45"},
+    {"clk": "112:49:53", "ev": "ignition, DPS at minimum throttle (10 percent)", "prov": "V", "src": "MR 110:09:53"},
+    {"clk": "112:50:21", "ev": "throttle to full (FTP) position", "prov": "V", "src": "MR 110:10:21, +28 s"},
+    {"clk": "112:51:25", "ev": "manual target update, +3400 ft downrange (P69)", "prov": "V", "src": "MR table 8-VI 110:11:25 (its T+ column reads 00:32, an OCR/misprint; 110:11:25 - 110:09:53 = 1:32). ALSJ puts the Houston call at 112:51:03 (T+1:07 on its clock); text says about 2 min in"},
+    {"clk": "112:53:28", "ev": "landing radar velocity data good", "prov": "V", "src": "MR 110:13:28"},
+    {"clk": "112:54:06", "ev": "landing radar range data good", "prov": "V", "src": "MR 110:14:06"},
+    {"clk": "112:57:19", "ev": "throttle down (FTP to throttle range)", "prov": "V", "src": "MR 110:17:19, +7:26"},
+    {"clk": "112:59:15", "ev": "P64 approach phase selected (pitchover)", "prov": "V", "src": "MR 110:19:15"},
+    {"clk": "112:59:26", "ev": "first landing-point redesignation", "prov": "V", "src": "MR 110:19:26; eight redesignations in all"},
+    {"clk": "112:59:54", "ev": "landing radar to low scale", "prov": "V", "src": "MR 110:19:54"},
+    {"clk": "113:00:51", "ev": "P66 landing phase (manual attitude/rate, just under 300 ft per MR)", "prov": "V", "src": "MR 110:20:51; ALSJ 113:00:48"},
+    {"clk": "113:01:58", "ev": "contact light / spacecraft landing", "prov": "V", "src": "MR 110:21:58"},
+    {"clk": "113:02:00", "ev": "descent engine stop", "prov": "E", "src": "MR: total firing about 727 s => 2 s after contact; ALSJ has engine stop about 113:02:03 (5 s). Band +2..+5 s."}
+  ],
+  "dust": [
+    {"h_ft": 110, "clk": "113:01:05", "what": "'Stand by for dust' call", "prov": "R", "src": "ALSJ call altitude; time est between 200 ft@113:00:55 and 80 ft@113:01:15"},
+    {"h_ft": 80, "what": "'getting a little dust' (ALSJ table); MR: first observed at 60 to 70 ft on the tape meter", "prov": "V"},
+    {"h_ft": 40, "what": "'very little dust'", "prov": "V"},
+    {"h_ft": 35, "what": "dust becomes easily visible in the film (ALSJ commentary at about 113:01:38)", "prov": "V for the film time, E for the height"},
+    {"h_ft": 0, "what": "contact light; MR: landing radar had no lock-up on moving dust", "prov": "V"}
+  ],
+  "targets": {
+    "landing_lat_lon_mr_photomap": [20.165278, 30.765833],
+    "landing_lat_lon_haase": [20.1909097, 30.7716815],
+    "offset_alsj_text": "planned point about 230 m west and about 60 m south of the actual landing site, as fetched (direction wording ambiguous in the fetch summary, not re-read in the original)",
+    "offset_caller_brief": "LM landed about 230 m W / 60 m S of the target; the Mission Report says 'several hundred meters south' after the redesignations",
+    "final_attitude": "4 to 5 deg pitch up, roll about 2 deg left (MR 10.7 and ALSJ), rear strut in a 3 to 4 m crater"
+  },
+  "geometry_reads": [
+    {"clk": "112:55:59", "what": "about 40 miles east of the site (ALSJ)", "range_km": [64.4, 74.1], "prov": "R", "note": "statute 64.4 km or nautical 74.1 km"},
+    {"clk": "112:58:40", "what": "5 miles east of the site (ALSJ commentary)", "range_km": [8.0, 9.3], "prov": "R"},
+    {"clk": "112:49:53", "what": "PDI about 18 degrees of longitude east of the site (ALSJ commentary)", "range_km": [480, 560], "prov": "R"}
+  ]
+}

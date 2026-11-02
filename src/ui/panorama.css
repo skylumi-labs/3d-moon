@@ -1,0 +1,49 @@
+.panorama-viewer {
+  position: fixed; inset: 0; z-index: 1000; overflow: hidden; background: #03050a; color: #f5f7fb;
+  font-family: inherit; -webkit-font-smoothing: antialiased; touch-action: none; user-select: none;
+  --panorama-transition-duration: 700ms;
+  opacity: 0; transition: opacity var(--panorama-transition-duration) ease;
+}
+.panorama-viewer.is-visible { opacity: 1; }
+.panorama-viewer.is-closing { pointer-events: none; }
+.panorama-viewer[hidden] { display: none; }
+.panorama-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+.panorama-canvas:active { cursor: grabbing; }
+.panorama-header, .panorama-footer {
+  position: absolute; left: 0; right: 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+  padding: max(1rem, env(safe-area-inset-top)) clamp(1rem, 4vw, 2.5rem) 1rem;
+  pointer-events: none;
+}
+.panorama-header { top: 0; background: linear-gradient(180deg, rgba(2, 4, 8, .78), transparent); }
+.panorama-footer { bottom: 0; align-items: flex-end; padding: 1rem clamp(1rem, 4vw, 2.5rem) max(1rem, env(safe-area-inset-bottom)); background: linear-gradient(0deg, rgba(2, 4, 8, .84), transparent); }
+.panorama-heading h2 { margin: 0; font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 600; letter-spacing: .025em; text-wrap: balance; }
+.panorama-heading p { margin: .3rem 0 0; color: rgba(231, 237, 248, .76); font-size: .82rem; }
+.panorama-close, .panorama-error button {
+  min-width: 44px; min-height: 44px; border: 0; border-radius: 999px; padding: 0 1rem; color: #f6f8fc;
+  background: rgba(22, 29, 42, .82); box-shadow: 0 6px 22px rgba(0, 0, 0, .28); font: inherit; cursor: pointer;
+  pointer-events: auto; transition: scale 120ms cubic-bezier(.2, 0, 0, 1), background-color 160ms ease;
+}
+.panorama-close:hover, .panorama-error button:hover { background: rgba(54, 67, 89, .94); }
+.panorama-close:active, .panorama-error button:active { scale: .96; }
+.panorama-close:focus-visible, .panorama-error button:focus-visible { outline: 2px solid #a9c8f5; outline-offset: 2px; }
+.panorama-hint { color: rgba(239, 243, 250, .87); font-size: .82rem; white-space: nowrap; }
+.panorama-credit { max-width: min(70%, 48rem); color: rgba(228, 235, 246, .72); font-size: .72rem; line-height: 1.5; text-align: right; }
+.panorama-credit a { color: #d4e2ff; text-decoration-color: rgba(212, 226, 255, .5); text-underline-offset: 2px; pointer-events: auto; }
+.panorama-error { position: absolute; top: 50%; left: 50%; display: flex; max-width: min(36rem, calc(100% - 2rem)); align-items: center; gap: .75rem; transform: translate(-50%, -50%); border-radius: 14px; padding: .75rem; color: #fff; background: rgba(18, 23, 33, .92); box-shadow: 0 10px 36px rgba(0, 0, 0, .35); font-size: .9rem; }
+.panorama-error[hidden] { display: none; }
+.panorama-error button { flex: 0 0 auto; }
+@media (max-width: 640px) {
+  .panorama-header { align-items: center; }
+  .panorama-footer { display: block; padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+  .panorama-hint { display: block; margin-bottom: .45rem; }
+  .panorama-credit { max-width: 100%; text-align: left; font-size: .67rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panorama-viewer { --panorama-transition-duration: 150ms; }
+  .panorama-close, .panorama-error button { transition: none; }
+}
+
+.panorama-entry { display: block; box-sizing: border-box; width: 100%; min-height: 44px; padding: .8rem 1rem; margin-top: .75rem; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; background: rgba(155,180,215,.12); color: #edf3ff; font: inherit; font-size: .85rem; text-align: left; cursor: pointer; transition: background-color 160ms ease, scale 120ms ease; }
+.panorama-entry:hover { background: rgba(155,180,215,.22); }
+.panorama-entry:active { scale: .96; }
+.panorama-entry:focus-visible { outline: 2px solid #a9c8f5; outline-offset: 2px; }

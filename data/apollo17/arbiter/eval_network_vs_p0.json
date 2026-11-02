@@ -1,0 +1,26 @@
+{
+ "A-sinuous-west-of-LM": {
+  "lengthM": 156.0,
+  "recallWithin1p5m": 0.884,
+  "medianDistM": 0.23
+ },
+ "B-north-branch": {
+  "lengthM": 170.0,
+  "recallWithin1p5m": 0.887,
+  "medianDistM": 0.18
+ },
+ "C-bundle-into-LM": {
+  "lengthM": 61.0,
+  "recallWithin1p5m": 0.645,
+  "medianDistM": 0.36
+ },
+ "E2-east-bundle-line": {
+  "lengthM": 165.0,
+  "recallWithin1p5m": 0.672,
+  "medianDistM": 0.37
+ },
+ "ALL": {
+  "recallWithin1p5m": 0.795
+ },
+ "M_network_km_on_p0_traces_share": 0.47
+}

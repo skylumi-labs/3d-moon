@@ -1,0 +1,33 @@
+name: Data source
+description: Propose a new Moon, Earth or sky data set.
+labels: [data]
+body:
+  - type: input
+    id: product
+    attributes:
+      label: Product name and id
+      description: For example the PDS product id or the archive's data set name.
+    validations:
+      required: true
+  - type: input
+    id: terms
+    attributes:
+      label: Terms of use (link)
+      description: We can only use data whose terms allow public redistribution of derived tiles.
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: Required credit line, exactly as the source asks
+    validations:
+      required: true
+  - type: input
+    id: resolution
+    attributes:
+      label: Coverage and resolution
+      description: Area, posting (metres per pixel) and whether that is the native resolution or a resampling.
+  - type: textarea
+    id: why
+    attributes:
+      label: What it would add to the viewer

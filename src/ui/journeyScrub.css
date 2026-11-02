@@ -1,0 +1,14 @@
+.journey-scrub {
+  width: min(560px, 100%); box-sizing: border-box;
+  display: flex; align-items: center; gap: 10px;
+  padding: 4px 12px; border-radius: 999px;
+  background: rgba(10, 12, 16, .72); border: 1px solid rgba(255, 255, 255, .14); backdrop-filter: blur(12px);
+  font-size: 0.75rem; line-height: 1.2; pointer-events: auto; text-shadow: none; position: relative; z-index: 3;
+}
+.journey-scrub[hidden] { display: none; }
+.journey-scrub .js-label { flex: 0 0 auto; opacity: .8; white-space: nowrap; }
+.journey-scrub .js-read { flex: 0 0 auto; min-width: 5.5em; text-align: right; opacity: .6; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.journey-scrub .js-range { flex: 1 1 auto; min-width: 0; height: 28px; margin: 0; touch-action: none; accent-color: #9db8ff; cursor: ew-resize; }
+@media (max-width: 800px) { .journey-scrub .js-label { display: none; } }
+.journey-scrub.js-ending { opacity: .55; transition: opacity .6s ease; }
+.journey-scrub .js-range:disabled { cursor: default; }

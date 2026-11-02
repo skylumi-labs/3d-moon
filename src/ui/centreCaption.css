@@ -1,0 +1,15 @@
+/*
+ * The centre caption: the feature name under the middle of the screen, plain text on the map. It stands ABOVE the whole dock (above a pin or
+ * viewpoint caption too), out of the dock's flow, so it adds nothing to the dock's height: --dock-top, --caption-h, the flight pad and the bar never move.
+ */
+.dock > .centre-caption {
+  position: absolute; bottom: calc(100% + 8px); left: 12px; right: 12px; box-sizing: border-box; margin: 0; padding: 0;
+  text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font: inherit; font-size: 0.8125rem; font-weight: 600; line-height: 1.3; letter-spacing: 0.04em; color: #e8ecf5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.45);
+  background: none; border: 0; box-shadow: none; pointer-events: none; user-select: none; -webkit-user-select: none;
+  opacity: 0; transition: opacity 350ms ease;
+}
+.dock > .centre-caption.on { opacity: 0.8; transition-duration: 250ms; }
+.dock > .centre-caption[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .dock > .centre-caption, .dock > .centre-caption.on { transition: none; } }

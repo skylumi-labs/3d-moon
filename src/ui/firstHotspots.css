@@ -1,0 +1,42 @@
+/* First-visit hotspots: a glowing ring with a slow breath on each place, a label in the splash's type. */
+.first-hotspots { position: absolute; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
+.first-hotspots[hidden] { display: none; }
+.fh {
+  position: absolute; left: 0; top: 0; margin: -22px 0 0 -22px; padding: 0; border: 0; background: none; color: #f1f4fb; cursor: pointer;
+  width: 44px; height: 44px; box-sizing: border-box; pointer-events: auto; will-change: transform; touch-action: none; -webkit-tap-highlight-color: transparent;
+  font-family: 'Jost Splash', Jost, 'Century Gothic', 'Avenir Next', Futura, ui-sans-serif, system-ui, sans-serif;
+}
+.fh[hidden] { display: none; }
+/* Entrance on the inner box so the positioning transform stays untouched. */
+.fh > i {
+  position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; box-sizing: border-box;
+  border: 1.5px solid rgba(241, 244, 251, 0.95); background: rgba(169, 200, 245, 0.28); box-shadow: 0 0 10px rgba(169, 200, 245, 0.7), 0 0 0 1px rgba(0, 0, 0, 0.35);
+  opacity: 0; transform: scale(0.4);
+  animation: fh-in 600ms cubic-bezier(0.16, 1, 0.3, 1) var(--fh-delay, 0ms) forwards;
+}
+.fh > i::after {
+  content: ''; position: absolute; inset: -1.5px; border-radius: 50%; border: 1.5px solid rgba(169, 200, 245, 0.9); opacity: 0;
+  animation: fh-breathe 2400ms ease-out calc(var(--fh-delay, 0ms) + 600ms) infinite;
+}
+.fh-label {
+  position: absolute; left: 38px; top: 50%; transform: translateY(-50%); white-space: nowrap; pointer-events: none;
+  font-weight: 300; font-size: 0.6875rem; line-height: 1; text-transform: uppercase; letter-spacing: 0.22em;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.8);
+  opacity: 0; transition: opacity 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fh.left .fh-label { left: auto; right: 38px; }
+.fh:hover .fh-label, .fh:focus-visible .fh-label { opacity: 1; }
+.fh:hover > i, .fh:focus-visible > i { background: rgba(169, 200, 245, 0.55); border-color: #fff; }
+.fh:focus-visible { outline: 2px solid #a9c8f5; outline-offset: -4px; border-radius: 22px; }
+/* Touch: no hover, so the label is always there (unless the layout pass found no room for it). */
+@media (hover: none), (pointer: coarse) {
+  .fh:not(.nolabel) .fh-label { opacity: 1; transition-delay: calc(var(--fh-delay, 0ms) + 300ms); }
+}
+@keyframes fh-in { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
+@keyframes fh-breathe { 0% { opacity: 0.8; transform: scale(1); } 100% { opacity: 0; transform: scale(2.6); } }
+@media (prefers-reduced-motion: reduce) {
+  .fh > i { transform: none; animation: fh-fade 600ms ease var(--fh-delay, 0ms) forwards; }
+  .fh > i::after { display: none; }
+  .fh-label { transition: none; }
+}
+@keyframes fh-fade { from { opacity: 0; } to { opacity: 1; } }

@@ -1,0 +1,28 @@
+.topography-legend {
+  position: fixed;
+  z-index: 8;
+  top: calc(env(safe-area-inset-top, 0px) + 12px);
+  right: max(12px, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+  width: min(16rem, calc(100vw - 24px));
+  padding: 10px 12px 9px;
+  color: #f5f7fc;
+  font: 0.75rem/1.35 system-ui, sans-serif;
+  text-shadow: none;
+  background: rgba(10, 12, 16, 0.78);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24), 0 2px 8px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+.topography-legend[hidden] { display: none; }
+.topography-legend strong { display: block; margin-bottom: 8px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.01em; }
+.topography-ramp { height: 10px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25); }
+.topography-labels { display: flex; justify-content: space-between; gap: 4px; margin-top: 5px; color: rgba(245,247,252,0.88); font-size: 0.625rem; font-variant-numeric: tabular-nums; }
+.topography-labels span:nth-child(2) { opacity: 0.65; }
+.topography-legend small { display: block; margin-top: 7px; color: rgba(245,247,252,0.68); font-size: 0.625rem; line-height: 1.35; }
+
+@media (max-width: 600px) {
+  body:has(.moon-labels:not([hidden])) .topography-legend { top: calc(env(safe-area-inset-top, 0px) + 64px); }
+}

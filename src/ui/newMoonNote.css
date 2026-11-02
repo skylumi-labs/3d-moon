@@ -1,0 +1,11 @@
+/* The new-Moon note over the Home caption: the caption's own look (dark pool, shadow, type), one subtle line and a chip button. */
+.caption.newmoon-note {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px; max-width: min(520px, 100%);
+}
+.caption.newmoon-note[hidden] { display: none; }
+.newmoon-line { font-size: 0.875rem; font-weight: 500; line-height: 1.35; color: #d5deef; }
+.newmoon-note .caption-action { margin-top: 0; min-height: 44px; padding: 4px 18px; font-size: 0.8125rem; }
+/* On a wide screen the caption rule (caption.css) sets align-self: flex-start; the note stays centred over the pill like the rest of the stack. */
+@media (min-width: 900px) {
+  .dock > .caption.newmoon-note { align-self: center; justify-self: center; text-align: center; }
+}

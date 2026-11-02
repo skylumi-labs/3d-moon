@@ -1,0 +1,48 @@
+name: Bug report
+description: Something renders wrong, breaks or is slow.
+labels: [bug, needs-repro]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL with the full query string
+      description: Copy it from the address bar (the share button gives one too).
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system and device
+    validations:
+      required: true
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU
+      description: The renderer string from chrome://gpu (or about:support in Firefox), for example "ANGLE (NVIDIA, ...)".
+  - type: input
+    id: dpr
+    attributes:
+      label: Device pixel ratio and window size
+      description: Run `devicePixelRatio, innerWidth, innerHeight` in the console.
+  - type: dropdown
+    id: switches
+    attributes:
+      label: Does `?tc=off` or `?tiles=off` change it?
+      options: ["Not tried", "?tc=off fixes it", "?tiles=off fixes it", "Neither changes it"]
+  - type: textarea
+    id: media
+    attributes:
+      label: Screenshot or screen recording

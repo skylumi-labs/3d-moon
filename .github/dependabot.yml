@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+    ignore:
+      # typescript 7: typescript-eslint peer range does not allow it yet (< 6.1)
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
+      # @sentry/browser 11: migration not reviewed
+      - dependency-name: "@sentry/browser"
+        update-types: ["version-update:semver-major"]
+      # @types/node 26: project targets Node 22
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

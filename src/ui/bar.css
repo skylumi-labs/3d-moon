@@ -1,0 +1,89 @@
+/* The one bar: a single glass row, icons only, with buttons spread across its width. The sheets open above it. The open pad has a glass row of its own right above it (.bar-padrow) unless the whole row fits. */
+.bar, .bar-padrow {
+  --bar-btn: 44px;
+  display: flex; align-items: center; justify-content: space-evenly; box-sizing: border-box; gap: 0;
+  width: min(100%, 36rem); min-height: 48px; padding: 1px; overflow: hidden; flex-wrap: nowrap;
+  background: rgba(10, 12, 16, 0.62); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 26px; text-shadow: none; color: #e8ecf5;
+}
+/* The pad's row: the bar's glass, radius and width, directly above it (the dock's 8 px gap), the groups spread across it. */
+.bar-padrow { min-height: 0; padding: 1px 7px; flex-wrap: wrap; justify-content: space-between; align-content: center; row-gap: 4px; }
+.bar-padrow[hidden] { display: none; }
+/* The slots are layout-free: the navigator's buttons and the bar's own are all items of the row. */
+.bar-navslot, .bar-padslot { display: contents; }
+.bar-icons { display: contents; }
+.bar button {
+  flex: 1 1 var(--bar-btn, 44px); min-width: 0; max-width: 48px; height: 44px; margin: 0; padding: 0; box-sizing: border-box;
+  display: flex; align-items: center; justify-content: center;
+  font: inherit; color: #e8ecf5; cursor: pointer;
+  background: none; border: 0; border-radius: 22px; -webkit-tap-highlight-color: transparent;
+}
+/* The model's widths are floors (dockRow.ts): the row is built so they fit, and nothing is squeezed under them. */
+.bar .nav-pill > button, .bar-icons > button { min-width: var(--bar-btn, 44px); }
+.bar button svg { width: 22px; height: 22px; flex: none; }
+.bar button .lbl { display: none; }
+.bar button:hover { background: rgba(255, 255, 255, 0.08); }
+.bar button:focus-visible, .bar-sheet button:focus-visible, .bar-sheet input:focus-visible { outline: 2px solid #a9c8f5; outline-offset: -2px; }
+.bar button[hidden] { display: none; }
+.bar button:disabled { opacity: 0.3; cursor: default; }
+.bar-more { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.bar-more button.in-more {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 56px; padding: 6px 4px; color: #e8ecf5; cursor: pointer;
+  font: inherit; font-size: 0.75rem; border-radius: 12px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.bar button[aria-pressed='true'], .bar button[aria-expanded='true'] { color: #fff; background: rgba(169, 200, 245, 0.22); }
+
+.bar-sheet {
+  box-sizing: border-box; width: min(32.5rem, 100%); padding: 10px 12px 8px; text-shadow: none;
+  max-height: min(calc(100dvh - 20dvh - 104px - env(safe-area-inset-bottom, 0px)), 42.5rem); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+  background: rgba(10, 12, 16, 0.78); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 16px; display: grid; gap: 8px;
+}
+.bar-sheet[hidden] { display: none; }
+.bar-sheet button {
+  font: inherit; color: #e8ecf5; cursor: pointer; min-height: 36px; padding: 0 14px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.16); -webkit-tap-highlight-color: transparent;
+}
+.bar-sheet button:disabled { opacity: 0.4; cursor: default; }
+.bar-sheet button[aria-pressed='true'] { background: rgba(169, 200, 245, 0.24); border-color: rgba(169, 200, 245, 0.6); color: #fff; }
+.bar-sheet-head { display: flex; gap: 8px; align-items: center; }
+.bar-when { flex: 1 1 0; min-width: 0; font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.bar-when.live { color: #a9c8f5; }
+.bar-range input[type='range'] { width: 100%; margin: 0; accent-color: #a9c8f5; height: 28px; }
+.bar-seg { display: inline-flex; gap: 4px; flex: none; }
+.bar-time .bar-sheet-head button { padding: 0 10px; flex: none; }
+.bar-time .bar-sheet-head button.bar-when { flex: 1 1 0; display: flex; align-items: center; justify-content: center; gap: 0.3em; padding: 0 8px; overflow: hidden; white-space: nowrap; }
+/* Narrow: the date may be cut short, the clock time never is. Under 7em (large text) the buttons wrap to a line of their own and the date gets the full width. */
+.bar-time .bar-sheet-head { flex-wrap: wrap; justify-content: center; }
+.bar-time .bar-sheet-head button.bar-when { min-width: min(100%, 7em); }
+.bar-when .w-date { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.bar-when .w-time { flex: none; }
+/* The time sheet is the bar's own surface (same fill, blur, border, radius and type), standing over the Time button. */
+.bar-sheet.bar-time {
+  width: min(26.25rem, 100%); padding: 10px 12px 8px; gap: 8px; grid-template-columns: minmax(0, 1fr);
+  background: rgba(10, 12, 16, 0.62); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 22px; font-size: 0.8125rem; color: #e8ecf5; letter-spacing: 0.02em;
+}
+.bar-time .bar-sheet-head button.bar-when { border-radius: 999px; }
+.bar-edit { display: flex; gap: 6px; align-items: center; }
+.bar-edit[hidden] { display: none; }
+.bar-edit input {
+  flex: 1 1 0; min-width: 0; box-sizing: border-box; min-height: 36px; padding: 0 12px; font: inherit; font-size: 0.875rem; font-variant-numeric: tabular-nums; text-align: center;
+  color: #e8ecf5; color-scheme: dark; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px;
+}
+.bar-edit input[aria-invalid] { border-color: #f0a3a3; }
+.bar-edit input:focus-visible { outline: 2px solid #a9c8f5; outline-offset: -2px; }
+.bar-edit button { flex: none; }
+
+.bar-edit-error { margin: 0; padding: 0 6px; font-size: 0.75rem; line-height: 1.35; color: #f6c4c4; text-align: center; text-wrap: balance; }
+.bar-edit-error[hidden] { display: none; }
+/* The clock is no longer live: the Time icon is tinted blue (the date is in its name and tooltip). */
+.bar button.not-live { color: #a9c8f5; }
+.bar button.not-live[aria-expanded='true'] { color: #fff; }
+/* Wide screens: with the pad or a flight in it the bar grows to 52 rem, so every icon and the open pad (three capsules and the stick) stay in one row (dockRow.ts barMaxRem, padRowKeepsIcons). The closed row keeps 36 rem. */
+@media (min-width: 1024px) { .bar.padrow, .bar.flying { width: min(100%, 52rem); } }
+/* Button width (dockRow.ts models it): 44 px from 400 px up, 40 px on a 360 to 399 px phone, 36 px under that, with the pad in the row or not. */
+@media (max-width: 399px) { .bar { --bar-btn: 40px; } }
+@media (max-width: 359px) { .bar { --bar-btn: 36px; } }
+/* The pad row's side padding (dockRow.ts padRowSizes inset): none to speak of under 360 px, where the two pairs, the dividers and the stick need the width. */
+@media (max-width: 359px) { .bar-padrow { padding: 1px; } }

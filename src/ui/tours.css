@@ -1,0 +1,85 @@
+/* The tour row and its card (archive mode): the dock stands 150 px higher there (dock.css), so the row keeps the bottom of the screen; the credit line is above the dock. */
+.tours {
+  position: absolute; left: 0; right: 0;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; justify-items: center; pointer-events: none;
+  padding: 0 12px;
+}
+.tours button {
+  pointer-events: auto; font: inherit; color: #e8ecf5; cursor: pointer;
+  min-height: 44px; padding: 0 16px; border-radius: 999px; white-space: nowrap;
+  background: rgba(10, 12, 16, 0.6); border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px); -webkit-tap-highlight-color: transparent; text-shadow: none;
+}
+.tours button:hover:not(:disabled) { background: rgba(40, 48, 64, 0.75); }
+.tours button:focus-visible { outline: 2px solid #a9c8f5; outline-offset: 2px; }
+.tours button:disabled { opacity: 0.4; cursor: default; }
+.tours button[aria-pressed='true'] { background: rgba(169, 200, 245, 0.24); border-color: rgba(169, 200, 245, 0.6); color: #fff; }
+.tours .play-all { font-weight: 600; }
+
+.tour-archive-tag { font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: #a9c8f5; opacity: 0.8; text-shadow: 0 1px 6px #000; pointer-events: none; }
+.tour-row {
+  display: flex; gap: 8px; max-width: 100%; overflow-x: auto; padding: 2px 0 4px;
+  scrollbar-width: none; scroll-snap-type: x proximity; overscroll-behavior-x: contain;
+  pointer-events: auto;
+}
+.tour-row::-webkit-scrollbar { display: none; }
+.tour-row button { flex: none; scroll-snap-align: center; }
+@media (min-width: 1100px) { .tour-row { flex-wrap: wrap; justify-content: center; overflow: visible; } }
+
+.tour-card {
+  pointer-events: auto; width: min(640px, 100%); box-sizing: border-box; padding: 12px 14px;
+  background: rgba(10, 12, 16, 0.72); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 14px; text-shadow: none;
+}
+.tour-card[hidden] { display: none; }
+.tour-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.tour-title { font-size: 1rem; font-weight: 600; }
+.tour-count { font-size: 0.75rem; opacity: 0.55; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tour-cap { margin: 6px 0 4px; font-size: 0.875rem; line-height: 1.45; text-wrap: pretty; }
+.tour-watch { margin: 0 0 10px; font-size: 0.8125rem; line-height: 1.4; color: #b9cff2; }
+.tour-watch > span:first-child { text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.6875rem; opacity: 0.75; }
+.tour-ctl { display: flex; gap: 8px; }
+.tour-ctl button { flex: 1; }
+.tour-bar { height: 3px; margin-top: 10px; border-radius: 2px; background: rgba(255, 255, 255, 0.12); overflow: hidden; }
+.tour-bar[hidden] { display: none; }
+.tour-bar i { display: block; height: 100%; width: 100%; background: #a9c8f5; transform-origin: left; transform: scaleX(0); }
+@keyframes tour-fill { to { transform: scaleX(1); } }
+
+@media (max-width: 800px) {
+  .tour-cap { font-size: 0.8125rem; }
+  .tours { gap: 6px; padding: 0 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .tour-bar i { animation-duration: 0.01s !important; } }
+
+/* Wide screens: the card stands to the left, clear of the subject in the middle. */
+@media (min-width: 900px) {
+  .tours { justify-items: center; }
+  .tour-card { position: fixed; left: 24px; top: 42%; transform: translateY(-50%); width: 380px; max-height: calc(100vh - 340px); overflow-y: auto; }
+}
+
+.chip.unavailable { opacity: 0.55; }
+/* Ground mode: one text column on the left, the card under the HUD block instead of over it. */
+@media (min-width: 900px) { body.ground-mode .tour-card { top: var(--hud-bottom, 42%); transform: none; max-height: calc(100vh - var(--hud-bottom, 42%) - 226px); }
+  /* A card that still overflows shows a thin scrollbar; the card stops above the chip rows. */
+  body.ground-mode .tour-card { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.4) transparent; }
+}
+
+/* A card the visitor has moved past (they changed the time): greyed, with the way back. */
+.tour-card.stale .tour-title { opacity: 0.5; }
+.tour-stale { margin: 6px 0 4px; font-size: 0.8125rem; line-height: 1.4; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.tour-stale[hidden] { display: none; }
+.tour-card.stale .tour-ctl { display: none; }
+
+/* The "More" toggle belongs to the phone's title strip; wide screens show the whole card. */
+.tour-more { display: none; }
+@media (max-width: 899px) {
+  .tour-card { padding: 6px 8px 6px 14px; }
+  .tour-head { align-items: center; }
+  .tour-title { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.9375rem; }
+  .tours .tour-more { display: inline-block; min-height: 36px; padding: 0 12px; font-size: 0.8125rem; flex: none; }
+  .tour-card:not(.open) .tour-cap, .tour-card:not(.open) .tour-watch, .tour-card:not(.open) .tour-ctl, .tour-card:not(.open) .tour-stale { display: none; }
+  .tour-card:not(.open) .tour-bar { margin-top: 6px; }
+  .tour-card.open { padding-bottom: 10px; }
+  .tour-card.open .tour-head { margin-bottom: 2px; }
+}

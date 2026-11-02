@@ -1,0 +1,40 @@
+/*
+ * The centre caption in the "Target lock" style (owner's style 2): corner brackets and a typed block beside them. Positions are set once per name
+ * (left/top/size); the brackets close in by a transform and the block only changes text, so a frame never lays out more than the typed lines.
+ * The font is self-hosted (public/fonts, OFL; THIRD-PARTY-NOTICES.txt): no font service is called.
+ */
+@font-face {
+  font-family: 'Share Tech Mono';
+  src: url('/fonts/share-tech-mono-regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+.lock-label {
+  position: fixed; left: 0; top: 0; width: 0; height: 0; z-index: 2; pointer-events: none; user-select: none; -webkit-user-select: none;
+  color: #cfe8ff; opacity: 0; transition: opacity 250ms ease;
+}
+.lock-label.on { opacity: 1; }
+.lock-label .lk-box { position: absolute; left: 0; top: 0; transition: opacity 300ms ease; }
+/* Each corner is its own layer (will-change): its shadow is rasterised once and the 420 ms close-in only composites. */
+.lock-label .lk-br { position: absolute; width: 18px; height: 18px; border: 0 solid currentColor; box-sizing: border-box; filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9)); will-change: transform; }
+.lock-label .lk-br.tl { left: 0; top: 0; border-left-width: 2px; border-top-width: 2px; }
+.lock-label .lk-br.tr { right: 0; top: 0; border-right-width: 2px; border-top-width: 2px; }
+.lock-label .lk-br.bl { left: 0; bottom: 0; border-left-width: 2px; border-bottom-width: 2px; }
+.lock-label .lk-br.br { right: 0; bottom: 0; border-right-width: 2px; border-bottom-width: 2px; }
+.lock-label .lk-text {
+  position: absolute; left: 0; top: 0; width: max-content; display: flex; flex-direction: column; gap: 4px; white-space: pre; text-transform: uppercase;
+  font-family: 'Share Tech Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace; font-weight: 400;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 1), 0 0 8px rgba(0, 0, 0, 0.8); transition: opacity 250ms ease;
+}
+.lock-label .lk-name { font-size: 1.5rem; line-height: 1.15; letter-spacing: 0.1em; }
+.lock-label .lk-line { font-size: 0.8125rem; line-height: 1.3; letter-spacing: 0.08em; color: rgba(238, 241, 248, 0.85); }
+.lock-label .lk-line:empty::before { content: '\200b'; }
+.lock-label .lk-cur { display: inline-block; width: 0.6em; height: 1em; margin-left: 2px; vertical-align: -0.12em; background: #cfe8ff; }
+.lock-label.typed .lk-cur { animation: lk-blink 0.9s steps(1) infinite; }
+@keyframes lk-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.lock-label .lk-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 480px) { .lock-label .lk-name { font-size: 1.25rem; } }
+@media (prefers-reduced-motion: reduce) {
+  .lock-label, .lock-label .lk-box, .lock-label .lk-text { transition: none; }
+  .lock-label.typed .lk-cur { animation: none; }
+}
+.lock-label .lk-text.stack { white-space: pre-wrap; }

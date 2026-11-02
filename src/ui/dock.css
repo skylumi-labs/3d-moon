@@ -1,0 +1,14 @@
+/* The bottom stack, standing 8 px over the screen's edge: caption(s), a sheet, the current viewpoint's name, and the one bar. The brand line (index.html) stands over it, at --dock-top. */
+.dock {
+  position: absolute; left: 0; right: 0; box-sizing: border-box;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 0 max(8px, env(safe-area-inset-right, 0px)) 0 max(8px, env(safe-area-inset-left, 0px));
+  pointer-events: none; z-index: 3;
+}
+.dock > * { pointer-events: auto; }
+/* The archive's chip row stands where the bar does: lift the stack above it. */
+body.archive .dock { bottom: calc(env(safe-area-inset-bottom, 0px) + 150px); }
+@media (min-width: 900px) {
+  .dock { padding-inline: max(18px, env(safe-area-inset-right, 0px)) max(18px, env(safe-area-inset-left, 0px)); }
+}

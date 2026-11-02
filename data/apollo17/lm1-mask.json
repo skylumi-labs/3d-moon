@@ -1,0 +1,22 @@
+{
+ "what": "the lunar module (2011 descent stage, its legs and its 2011 shadow) filled out of the 25 cm tier ratio: harmonic fill for the low frequencies plus ring-sampled patches of the photograph residual for the texture",
+ "colRow": [
+  4432,
+  2812
+ ],
+ "radiusTexels": 30,
+ "featherTexels": 8,
+ "radiusM": 7.5,
+ "blockTexels": 24,
+ "residualBoxRadiusTexels": 10,
+ "seed": 12345,
+ "changedTexels": 3932,
+ "largestByteChange": 148,
+ "raw": "Lm1.r.raw.u8.gz",
+ "measured": {
+  "ringHfSdBytes": 1.42,
+  "fillHfSdBytes": 1.54,
+  "ringMetreSdBytes": 6.25,
+  "fillMetreSdBytes": 4.02
+ }
+}

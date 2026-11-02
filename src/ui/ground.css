@@ -1,0 +1,36 @@
+/* Ground mode's controls: camera presets, walk, origin labels, back up. One readable panel, grouped, with a filled pill on the chosen one. */
+.ground-panel {
+  position: absolute; top: calc(env(safe-area-inset-top, 0px) + 12px); right: 12px; pointer-events: auto; z-index: 3;
+  display: flex; flex-direction: column; align-items: stretch; gap: 8px; width: 216px; box-sizing: border-box; padding: 10px;
+  background: rgba(10, 12, 16, 0.78); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 14px;
+}
+.ground-panel[hidden] { display: none; }
+.gp-group { display: flex; flex-direction: column; gap: 4px; }
+.gp-group + .gp-group { padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.16); }
+.gp-group[hidden] { display: none; }
+.ground-panel button {
+  font: inherit; font-size: 0.875rem; color: #e8ecf5; cursor: pointer; text-shadow: none; white-space: nowrap; text-align: left;
+  display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 12px 0 8px; border-radius: 999px; -webkit-tap-highlight-color: transparent;
+  background: rgba(255, 255, 255, 0.05); border: 1px solid transparent;
+}
+.ground-panel button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.13); }
+.ground-panel button:disabled { opacity: 0.4; cursor: default; }
+.ground-panel button[aria-pressed='true'] { background: #a9c8f5; border-color: #a9c8f5; color: #0a0c10; font-weight: 600; }
+.ground-panel button:focus-visible { outline: 2px solid #a9c8f5; outline-offset: 2px; }
+.gp-glyph {
+  flex: none; width: 26px; height: 26px; border-radius: 50%; display: inline-grid; place-items: center;
+  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0; background: rgba(255, 255, 255, 0.14);
+}
+.ground-panel button[aria-pressed='true'] .gp-glyph { background: rgba(10, 12, 16, 0.18); }
+@media (max-width: 800px) {
+  .ground-panel { top: auto; bottom: calc(env(safe-area-inset-bottom, 0px) + 200px); left: 8px; right: 8px; width: auto; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px; }
+  .gp-group { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  .gp-group + .gp-group { padding-top: 0; border-top: 0; }
+  .ground-panel button { min-height: 40px; }
+}
+/* Descent flight controls (G2b): the same panel, plus the scrubber. */
+.flight-panel .flight-scrub { width: 100%; accent-color: #a9c8f5; }
+.flight-panel { width: 340px; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 6px; }
+.flight-panel button { justify-content: center; padding: 0 12px; min-height: 36px; font-size: 0.8125rem; }
+.flight-panel .sep { width: 100%; height: 1px; background: rgba(255, 255, 255, 0.16); margin: 2px 0; }
+@media (max-width: 800px) { .flight-panel { width: auto; } .flight-panel .sep { display: none; } }

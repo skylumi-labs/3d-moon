@@ -1,0 +1,98 @@
+{
+ "ortho50_vs_p25_shift_m": {
+  "n": 13,
+  "medianEN": [
+   0.42,
+   0.53
+  ],
+  "meanEN": [
+   0.46,
+   0.53
+  ],
+  "stdEN": [
+   5.0,
+   0.1
+  ],
+  "maxAbs": 13.75
+ },
+ "dtm_vs_p25_shift_m": {
+  "n": 6,
+  "medianEN": [
+   0.84,
+   2.22
+  ],
+  "meanEN": [
+   2.46,
+   2.49
+  ],
+  "stdEN": [
+   7.71,
+   0.88
+  ],
+  "maxAbs": 16.73
+ },
+ "dtm_vs_ortho50_shift_m": {
+  "n": 6,
+  "medianEN": [
+   1.87,
+   1.24
+  ],
+  "meanEN": [
+   1.41,
+   1.35
+  ],
+  "stdEN": [
+   1.79,
+   0.42
+  ],
+  "maxAbs": 3.27
+ },
+ "patchDTM_vs_haaseDTM_shift_m": {
+  "n": 11,
+  "medianEN": [
+   -11.97,
+   -8.07
+  ],
+  "meanEN": [
+   -9.46,
+   -5.52
+  ],
+  "stdEN": [
+   4.65,
+   4.04
+  ],
+  "maxAbs": 13.05
+ },
+ "patchL0_vs_ortho50_shift_m": {
+  "n": 8,
+  "medianEN": [
+   -12.98,
+   -7.71
+  ],
+  "meanEN": [
+   -13.04,
+   -7.71
+  ],
+  "stdEN": [
+   0.17,
+   0.09
+  ],
+  "maxAbs": 13.4
+ },
+ "patchL0_vs_p25_shift_m": {
+  "n": 8,
+  "medianEN": [
+   -12.52,
+   -7.18
+  ],
+  "meanEN": [
+   -12.7,
+   -7.2
+  ],
+  "stdEN": [
+   0.4,
+   0.14
+  ],
+  "maxAbs": 13.57
+ }
+}

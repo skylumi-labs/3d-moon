@@ -1,0 +1,51 @@
+{
+  "name": "3d-moon",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "description": "A full-screen Moon you can fly around, with the real Sun and Earth. Real terrain and imagery from LRO, SELENE and Apollo.",
+  "scripts": {
+    "dev": "vite --port 5190 --strictPort",
+    "dev:hosted": "MOON_REMOTE_BASE=${MOON_MIRROR:-https://storage.googleapis.com/skylumi-moon-serve-b7f804/moon/} vite --port 5190 --strictPort",
+    "build": "tsc --noEmit && vite build && node scripts/assert-dist-public.mjs",
+    "build:bundle": "vite build",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.audit.json --noEmit",
+    "preview": "vite preview --port 5191 --strictPort",
+    "test": "node scripts/run-tests.mjs",
+    "audit:clip": "node --import tsx audit/clip-check.mts",
+    "test:mid-sample": "node --import tsx scripts/mid-sample.test.mts",
+    "test:wide-height": "node --import tsx scripts/wide-height.test.mts",
+    "test:extract-sldem": "node --import tsx scripts/extract-sldem-wide.test.mts",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@sentry/browser": "10.76.2",
+    "astronomy-engine": "2.1.19",
+    "posthog-js": "1.438.21",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "22.20.5",
+    "@types/three": "0.186.0",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "playwright-core": "1.64.1",
+    "sharp": "^0.35.5",
+    "tsx": "^4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.72.0",
+    "vite": "8.3.5"
+  },
+  "homepage": "https://skylumi.org/3d-moon/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skylumi-labs/3d-moon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/skylumi-labs/3d-moon/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

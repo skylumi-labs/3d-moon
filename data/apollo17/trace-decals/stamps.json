@@ -1,0 +1,157 @@
+{
+ "schema": "a17-trace-stamps/1",
+ "atlas": "stamps-height16.png",
+ "encoding": "16-bit PNG, height_m = (value - 32768) * 0.00005",
+ "stamps": {
+  "lrvWheel": {
+   "x": 0,
+   "y": 0,
+   "w": 255,
+   "h": 32,
+   "resM": 0.01,
+   "alongTrack": "x, wraps every wheel circumference 2.554 m",
+   "lateral": "y, centre at row h/2, 0.32 m span",
+   "sinkageM": 0.005011417697431017
+  },
+  "a7lbBoot": {
+   "x": 0,
+   "y": 34,
+   "w": 60,
+   "h": 26,
+   "resM": 0.005,
+   "alongTrack": "x, heel at 0, toe at 0.30 m",
+   "sinkageM": 0.010725
+  }
+ },
+ "params": {
+  "wheel_diameter_m": [
+   0.813,
+   "V",
+   "NASA/TM-2009-215798 Table 4: 81.3 cm"
+  ],
+  "wheel_width_m": [
+   0.229,
+   "V",
+   "NASA/TM-2009-215798 Table 4: 22.9 cm"
+  ],
+  "tread_coverage": [
+   0.5,
+   "V",
+   "NASA/TM-2009-215798 Table 4/6: 50 percent coverage with chevron tread strips"
+  ],
+  "wheel_load_pressure_kPa": [
+   4.14,
+   "V",
+   "NASA/TM-2009-215798 Table 4: ground pressure 4.14 kPa at nominal load"
+  ],
+  "lrv_track_m": [
+   1.83,
+   "A",
+   "wheel-to-wheel track 72 in: web summaries only, primary source not opened here"
+  ],
+  "tread_pitch_m": [
+   0.07,
+   "A",
+   "chevron pitch is NOT in the sources read; 0.07 m is a placeholder (about 36 chevrons per 2.55 m circumference)"
+  ],
+  "chevron_half_angle_deg": [
+   45.0,
+   "A",
+   "placeholder"
+  ],
+  "tread_bite": [
+   0.15,
+   "A",
+   "strip sinks 15 percent deeper than the gap, placeholder"
+  ],
+  "bekker_n": [
+   1.0,
+   "V",
+   "Costes 1972 as tabulated in NASA/TM-2009-215798 Table 5"
+  ],
+  "bekker_kphi_N_cm3": [
+   0.82,
+   "V",
+   "same table: k_phi = 0.82 N/cm^(n+2)"
+  ],
+  "bekker_kc_N_cm2": [
+   0.14,
+   "D",
+   "same table gives 0 to 0.28 N/cm^(n+1); midpoint used, the sinkage changes < 2 percent across the range"
+  ],
+  "cohesion_N_cm2": [
+   0.0175,
+   "D",
+   "table range 0 to 0.035, midpoint (not used in the sinkage formula)"
+  ],
+  "friction_deg": [
+   35.0,
+   "V",
+   "table: 35 +/- 4"
+  ],
+  "berm_frac": [
+   0.15,
+   "A",
+   "lateral berm height as a fraction of sinkage, placeholder; SP-315 gives no berm size"
+  ],
+  "albedo_sigma_ln": [
+   0.0,
+   "D",
+   "along-track lognormal modulation of the darkening amplitude; FITTED by the arbiter to the real along-track variability (set via env/arg)"
+  ],
+  "edge_width_m": [
+   0.015,
+   "A",
+   "rut wall softness"
+  ],
+  "sinkage_sigma_ln": [
+   0.35,
+   "A",
+   "along-track lognormal variability of sinkage"
+  ],
+  "sinkage_corr_m": [
+   2.0,
+   "A",
+   "correlation length of that variability"
+  ],
+  "boot_length_m": [
+   0.3,
+   "A",
+   "A7LB sole about 30 x 13 cm: task brief, not verified"
+  ],
+  "boot_width_m": [
+   0.13,
+   "A",
+   "same"
+  ],
+  "suit_mass_kg": [
+   165.0,
+   "A",
+   "astronaut + A7LB suit + PLSS, rough"
+  ],
+  "boot_contact_cm2": [
+   300.0,
+   "A",
+   "wetted area of one sole, rough"
+  ],
+  "stride_m": [
+   0.75,
+   "A",
+   "foot step length for walking / loping, rough"
+  ],
+  "lunar_g": [
+   1.62,
+   "V",
+   "standard"
+  ],
+  "footprint_depth_note": [
+   "SP-315 ch.8: footprints crisp, depth 1 to a few cm, soft spots 1-2 cm at the reference plane",
+   "V",
+   "NASA SP-315 Apollo 16 PSR ch. 8 Soil Mechanics"
+  ]
+ },
+ "warnings": [
+  "tread pitch, chevron angle, tread bite, berm size, boot outline and sole pattern are placeholders (flag A)",
+  "lrv_track_m 1.83 unconfirmed; the arbiter rejects a 1.83 m wheel pair at 25 cm"
+ ]
+}

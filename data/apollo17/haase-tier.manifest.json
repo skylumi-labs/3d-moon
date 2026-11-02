@@ -1,0 +1,101 @@
+{
+ "version": 1,
+ "note": "optional level L-1; add to a17 manifest.levels (finest first in sampling order) when present",
+ "tangentPlaneOriginLonLat": [
+  30.7723,
+  20.1911
+ ],
+ "site": "eastM/northM are metres east/north of tangentPlaneOriginLonLat (the a17 manifest site point), like the other levels",
+ "siteLmLonLat": [
+  30.7716815,
+  20.1909097
+ ],
+ "detailEncoding": "ratio = 2^((byte - 128) / 40)",
+ "level": {
+  "name": "L-1",
+  "w": 5632,
+  "h": 5632,
+  "texelM": 0.25,
+  "lon0": 30.733203334127573,
+  "lat0": 20.214371906709676,
+  "eastM": -1112.6863761039733,
+  "northM": 705.6821821956485,
+  "haaseFrameEastM": -1125.3863761039734,
+  "haaseFrameNorthM": 698.4821821956484,
+  "axisEastPerTexelM": [
+   0.25003694640213325,
+   -0.000049393103267902916
+  ],
+  "axisSouthPerTexelM": [
+   -0.0000493937557166646,
+   -0.2499999590936568
+  ],
+  "rotationDeg": -0.011318392574435602,
+  "detail": "Lm1.r.u8.gz",
+  "detailBytes": 15774304,
+  "tmOriginXY": [
+   932.125,
+   612960.375
+  ],
+  "crs": "package TM: transverse Mercator, central meridian 30.7, k 1, false easting 0, sphere 1737400 m",
+  "effectiveResolutionNote": "native pixels 27 cm across track x 56 cm along track (LROC post 379), resampled to 25 cm; the along-track axis is roughly north-south"
+ },
+ "heights": {
+  "file": "Lm1.h.f32.gz",
+  "encoding": "float32 little endian, row major from the top-left, metres above the 1737.4 km sphere minus h0M",
+  "h0M": -2037,
+  "bytes": 508902,
+  "w": 1020,
+  "h": 1019,
+  "texelM": 1.5,
+  "tmOriginXY": [
+   870.75,
+   613020.75
+  ],
+  "lon0": 30.731046862294374,
+  "lat0": 20.21636333297907,
+  "eastM": -1174.0593033270372,
+  "northM": 766.0688988063757,
+  "haaseFrameEastM": -1186.7593033270373,
+  "haaseFrameNorthM": 758.8688988063757,
+  "axisEastPerTexelM": [
+   1.5002409099026863,
+   -0.00027707610263405513
+  ],
+  "axisSouthPerTexelM": [
+   -0.0002768818092135916,
+   -1.4999997861273187
+  ],
+  "rotationDeg": -0.010581827891491782,
+  "holesFilled": 0,
+  "sample": "bicubic (Catmull-Rom); source is a 1.5 m DTM"
+ },
+ "frameShiftEastNorthM": [
+  12.7,
+  7.2
+ ],
+ "lmTier": {
+  "col": 4431.7,
+  "row": 2815.6200000001118,
+  "tangentEastNorthM_haaseFrame": [
+   -17.602435099394295,
+   -5.77053358571157
+  ],
+  "tangentEastNorthM_inShiftedFrame": [
+   -4.902435099394296,
+   1.42946641428843
+  ]
+ },
+ "sun": {
+  "label": "ephemeris 2011-08-14T22:35:12.000Z",
+  "elDeg": 44.81,
+  "azFromNorthDeg": -113.7
+ },
+ "flattening": {
+  "clampMin": 0.35,
+  "avgRadiusM": 200,
+  "reliefScaleRemovedM": ">= ~3 (1.5 m DTM)"
+ },
+ "validShare": 0.9996664189110117,
+ "credit": "Haase, I., Wählisch, M., Gläser, P., Oberst, J., Robinson, M. S. (TU Berlin / DLR), LROC NAC M168000580RE 25 cm orthoimage and 1.5 m DTM; NASA/GSFC/Arizona State University; USGS PDS Annex"
+}

@@ -1,0 +1,30 @@
+{
+  "a11": {
+    "name": "Apollo 11 landing site",
+    "credit": "NASA/GSFC/Arizona State University",
+    "stdParallelDeg": 1,
+    "dtm": { "file": "dtm.tif", "raw": "dtm.raw", "w": 2111, "h": 13978, "x0": -4748754.0000014, "y0": 37496.000000011, "px": 2 },
+    "ortho": { "file": "ortho1.tif", "raw": "ortho.raw", "w": 8440, "h": 55908, "x0": -4748752.9999999, "y0": 37494.999999999, "px": 0.5 },
+    "site": { "lat": 0.6741, "lon": 23.4730 },
+    "sun": { "time": "2011-01-22T19:00:00Z" },
+    "l2Block": 4,
+    "l1": { "w": 4096, "h": 4096 },
+    "l0": { "n": 4096 }
+  },
+  "a17": {
+    "name": "Apollo 17 landing site",
+    "credit": "NASA/GSFC/Arizona State University",
+    "stdParallelDeg": 20,
+    "dtm": { "file": "dtm.tif", "raw": "dtm.raw", "w": 12049, "h": 19760, "x0": -4265914.0000013, "y0": 629952.00000019, "px": 2.0000000000006 },
+    "ortho": { "file": "ortho1.tif", "raw": "ortho.raw", "w": 40161, "h": 65864, "x0": -4265913.0000002, "y0": 629951.4, "px": 0.6000000000000 },
+    "site": { "lat": 20.1911, "lon": 30.7723 },
+    "sunImages": {
+      "anchor": { "m": 150361817, "utc": "2011-01-22T18:55:49Z", "note": "LROC NAC M clock (s) to UTC: anchored on the Apollo 11 image M150361817 whose PDS label start time is 18:55:49; checked against M159746082 = 2011-05-11 09:40:14.998 (Apollo 17 DTM label)" },
+      "images": ["M134985003", "M137346262", "M144415885", "M150314689", "M152669024", "M159746082"],
+      "blockM": 512
+    },
+    "l2Block": 4,
+    "l1": { "w": 4096, "h": 4096 },
+    "l0": { "n": 4096 }
+  }
+}

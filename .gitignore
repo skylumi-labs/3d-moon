@@ -1,0 +1,33 @@
+node_modules
+dist
+.env
+.env.*
+!.env.example
+.DS_Store
+__pycache__/
+
+# Local tile and patch sets (see .env.example)
+.tiles
+.patch
+.mid-patch/
+
+# Local render and audit output
+.shots/
+shots/
+shots-*/
+.audit-out/
+.clip-out/
+.fx-out/
+.render-out/
+data/apollo17/previews/
+
+# Signing material never enters git
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.mobileprovision
+*.p8
+*.cer
+*.certSigningRequest
+keystore.properties

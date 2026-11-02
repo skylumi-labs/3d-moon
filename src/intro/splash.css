@@ -1,0 +1,70 @@
+/* The opening's splash (splash.ts), v6: a cinematic title card. Black bars top and bottom, a faint still of Tycho's rim, thin
+   wide-tracked capitals and a hairline loading line. On exit the title fades up, the still cross-fades into the live canvas and the
+   bars retreat. The timings here match the constants in splash.ts. */
+@font-face {
+  font-family: 'Jost Splash';
+  src: url('/fonts/jost-300.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+.splash {
+  --bar-h: clamp(72px, 14vh, 18vh);
+  --ease-bars: cubic-bezier(0.16, 1, 0.3, 1);
+  position: fixed; inset: 0; z-index: 60; overflow: hidden; background: transparent; color: #fff;
+  pointer-events: auto; cursor: progress;
+  opacity: 0; transition: opacity .6s ease;
+  font-family: 'Jost Splash', Jost, 'Century Gothic', 'Avenir Next', 'Futura', ui-sans-serif, system-ui, sans-serif;
+}
+.splash.in { opacity: 1; }
+.splash-bg { position: absolute; inset: 0; background: #000; }
+.splash-still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .42; filter: brightness(.75) contrast(1.1); }
+.splash-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 55%, rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, .15) 35%, rgba(0, 0, 0, .6) 75%, #000 100%); }
+.splash-glow { position: absolute; left: 0; right: 0; top: 0; height: 60%; background: radial-gradient(ellipse 45% 70% at 50% 0%, rgba(255, 226, 190, .22), rgba(255, 226, 190, .06) 45%, rgba(255, 226, 190, 0) 75%); }
+.splash-content {
+  position: absolute; inset: var(--bar-h) 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 0 1rem; box-sizing: border-box;
+}
+.splash-title { margin: 0; font-weight: 300; text-transform: uppercase; letter-spacing: .38em; margin-right: -.38em; line-height: 1.1; font-size: clamp(1.6rem, 5.4vw, 3.6rem); text-wrap: balance; text-shadow: 0 0 24px rgba(0, 0, 0, .6); }
+.splash-sub { margin: 1.1rem 0 0; font-weight: 300; text-transform: uppercase; letter-spacing: .28em; margin-right: -.28em; font-size: clamp(.65rem, 1.2vw, .8rem); color: rgba(255, 255, 255, .82); text-wrap: balance; text-shadow: 0 0 12px rgba(0, 0, 0, .9), 0 0 3px rgba(0, 0, 0, .8); }
+.splash-progress { width: min(15rem, 56vw); margin-top: 2rem; animation: splash-breathe 2.6s ease-in-out infinite; }
+.splash-bar { position: relative; display: block; width: 100%; height: 1px; background: rgba(255, 255, 255, .14); }
+.splash-bar > b { display: block; height: 100%; width: 100%; background: rgba(255, 255, 255, .85); transform: scaleX(0); transform-origin: 0 50%; will-change: transform; }
+/* A soft light riding the head of the line: a full-width layer shifted so its bright end sits at the head (compositor only). */
+.splash-bar > i { position: absolute; left: 0; top: -1px; width: 100%; height: 3px; transform: translateX(-100%); will-change: transform; pointer-events: none;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) calc(100% - 3.2rem), rgba(255, 244, 228, .5) 100%); filter: blur(1px); }
+@keyframes splash-breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+.splash-band { position: absolute; left: 0; right: 0; z-index: 3; height: var(--bar-h); background: #000; will-change: transform; }
+.splash-top { top: 0; border-bottom: 1px solid rgba(255, 255, 255, .07); }
+.splash-bottom { bottom: 0; border-top: 1px solid rgba(255, 255, 255, .07); }
+
+@media (orientation: portrait) and (max-width: 600px) {
+  .splash { --bar-h: 10vh; }
+  .splash-title { font-size: 1.6rem; letter-spacing: .32em; margin-right: -.32em; }
+  .splash-sub { font-size: .65rem; letter-spacing: .22em; margin-right: -.22em; }
+}
+
+/* "The Moon in 3D" on one line at 320 px: a little less tracking below 360 px. */
+@media (orientation: portrait) and (max-width: 359px) {
+  .splash-title { letter-spacing: .24em; margin-right: -.24em; }
+}
+
+/* The unveil: text up and out, still into the live canvas, bars away (top up, bottom down). */
+.splash.out { pointer-events: none; cursor: default; }
+.splash.out .splash-content { opacity: 0; translate: 0 -1.2rem; transition: opacity .6s ease, translate .6s ease; }
+.splash.out .splash-bg, .splash.out .splash-still, .splash.out .splash-vignette, .splash.out .splash-glow { opacity: 0; transition: opacity .9s ease; }
+.splash.out .splash-top { transform: translateY(-101%); transition: transform 1.2s var(--ease-bars) .2s; }
+.splash.out .splash-bottom { transform: translateY(101%); transition: transform 1.2s var(--ease-bars) .2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-progress { animation: none; opacity: .9; }
+  .splash-bar > i { display: none; }
+  .splash.out .splash-content, .splash.out .splash-bg, .splash.out .splash-still, .splash.out .splash-vignette, .splash.out .splash-glow { transition-duration: .3s; translate: none; }
+  .splash.out .splash-band { transform: none; opacity: 0; transition: opacity .3s ease; }
+}
+
+/* The page's own controls wait until the flight has landed. */
+body.intro #ui { transition: opacity .9s ease; }
+body.intro-on #ui { opacity: 0; pointer-events: none !important; }
+body.intro-on #ui * { pointer-events: none !important; }
+
+/* A failure to start must show over the splash, never sit under it. */
+body.intro #err { z-index: 90; }

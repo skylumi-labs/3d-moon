@@ -1,0 +1,12 @@
+/* The ground view's two viewpoints: one segmented control above the bar. */
+.viewpoints {
+  display: flex; gap: 2px; padding: 3px; border-radius: 22px; background: rgba(8, 11, 18, 0.72); border: 1px solid rgba(190, 205, 235, 0.22);
+  backdrop-filter: blur(10px);
+}
+.viewpoints[hidden] { display: none; }
+.viewpoints button {
+  min-height: 40px; padding: 0 16px; border: 0; border-radius: 19px; background: none; color: #d4e2ff; font: inherit; font-size: 0.875rem; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.viewpoints button[aria-pressed='true'] { background: rgba(169, 200, 245, 0.26); color: #fff; }
+.viewpoints button:focus-visible { outline: 2px solid #a9c8f5; outline-offset: -2px; }

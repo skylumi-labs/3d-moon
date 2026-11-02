@@ -1,0 +1,946 @@
+{
+ "source": "DATA/APOLLO17_CONTROLPOINTS_2018.TAB (+ EXTRAS/GIS/APOLLO17_CONTROLPOINTS_2018.SHP cross-check)",
+ "package": "Apollo17_PDS_fullPackage_Haase.zip, Haase et al. 2018/2019, TU Berlin / DLR, USGS PDS Annex; use constraint: please cite authors",
+ "crs": "TAB: Moon body-fixed cartesian metres. lonDeg/latDeg planetocentric on the 1737.4 km sphere. tm_*: transverse Mercator, central meridian 30.7, k=1, false easting 0 (the GeoTIFF CRS of the 25 cm, 1.5 m and 0.5 m products, sphere R=1737400 m). patchGrid_*: the a17 patch grid (equirectangular, standard parallel 20 deg).",
+ "tabVsShpMaxDiffM": 0.06,
+ "tabVsShpWorstId": 45,
+ "shpPointsMissingFromTab": [],
+ "notes": "Point 46 duplicates 29 (EP-5); 47 duplicates 4 (EP-6). The table has 55 rows, the shapefile 53 points.",
+ "points": [
+  {
+   "id": 1,
+   "name": "Station 1, East pan",
+   "bodyFixedXYZ_m": [
+    1399020.2,
+    833546.0,
+    597787.6
+   ],
+   "lonDeg": 30.7867809,
+   "latDeg": 20.1569542,
+   "radiusM": 1734764.1,
+   "heightAboveSphereM": -2635.9,
+   "tm_x_m": 2470.32,
+   "tm_y_m": 611227.03,
+   "patchGrid_x_m": -4251775.26,
+   "patchGrid_y_m": 611226.39
+  },
+  {
+   "id": 2,
+   "name": "Station 1, West pan",
+   "bodyFixedXYZ_m": [
+    1399031.1,
+    833533.9,
+    597780.2
+   ],
+   "lonDeg": 30.7862189,
+   "latDeg": 20.1566887,
+   "radiusM": 1734764.5,
+   "heightAboveSphereM": -2635.5,
+   "tm_x_m": 2454.32,
+   "tm_y_m": 611218.97,
+   "patchGrid_x_m": -4251791.28,
+   "patchGrid_y_m": 611218.33
+  },
+  {
+   "id": 3,
+   "name": "Station 1, LRV/ center station 1",
+   "bodyFixedXYZ_m": [
+    1399024.6,
+    833540.4,
+    597786.3
+   ],
+   "lonDeg": 30.7865324,
+   "latDeg": 20.1569035,
+   "radiusM": 1734764.5,
+   "heightAboveSphereM": -2635.5,
+   "tm_x_m": 2463.24,
+   "tm_y_m": 611225.49,
+   "patchGrid_x_m": -4251782.35,
+   "patchGrid_y_m": 611224.85
+  },
+  {
+   "id": 4,
+   "name": "Station 1, EP-6",
+   "bodyFixedXYZ_m": [
+    1399023.7,
+    833539.9,
+    597789.1
+   ],
+   "lonDeg": 30.7865335,
+   "latDeg": 20.157002,
+   "radiusM": 1734764.5,
+   "heightAboveSphereM": -2635.5,
+   "tm_x_m": 2463.27,
+   "tm_y_m": 611228.48,
+   "patchGrid_x_m": -4251782.31,
+   "patchGrid_y_m": 611227.84
+  },
+  {
+   "id": 5,
+   "name": "Station 2, Southwest pan",
+   "bodyFixedXYZ_m": [
+    1403450.5,
+    827642.7,
+    596182.2
+   ],
+   "lonDeg": 30.5286992,
+   "latDeg": 20.0980698,
+   "radiusM": 1734963.7,
+   "heightAboveSphereM": -2436.3,
+   "tm_x_m": -4878.11,
+   "tm_y_m": 609443.32,
+   "patchGrid_x_m": -4259129.21,
+   "patchGrid_y_m": 609440.81
+  },
+  {
+   "id": 6,
+   "name": "Station 2, Northeast pan",
+   "bodyFixedXYZ_m": [
+    1403391.7,
+    827685.7,
+    596228.0
+   ],
+   "lonDeg": 30.5310521,
+   "latDeg": 20.0998171,
+   "radiusM": 1734952.4,
+   "heightAboveSphereM": -2447.6,
+   "tm_x_m": -4811.05,
+   "tm_y_m": 609496.24,
+   "patchGrid_x_m": -4259062.16,
+   "patchGrid_y_m": 609493.8
+  },
+  {
+   "id": 7,
+   "name": "Station 2, LRV/ center station 2",
+   "bodyFixedXYZ_m": [
+    1403408.3,
+    827671.7,
+    596209.3
+   ],
+   "lonDeg": 30.5303314,
+   "latDeg": 20.0991556,
+   "radiusM": 1734952.7,
+   "heightAboveSphereM": -2447.3,
+   "tm_x_m": -4831.6,
+   "tm_y_m": 609476.2,
+   "patchGrid_x_m": -4259082.7,
+   "patchGrid_y_m": 609473.74
+  },
+  {
+   "id": 8,
+   "name": "Station 3, Pan",
+   "bodyFixedXYZ_m": [
+    1402191.0,
+    828101.8,
+    598326.0
+   ],
+   "lonDeg": 30.5651232,
+   "latDeg": 20.17422,
+   "radiusM": 1734902.4,
+   "heightAboveSphereM": -2497.6,
+   "tm_x_m": -3839.0,
+   "tm_y_m": 611751.5,
+   "patchGrid_x_m": -4258091.32,
+   "patchGrid_y_m": 611749.94
+  },
+  {
+   "id": 9,
+   "name": "Station 3, LRV/ center station 3",
+   "bodyFixedXYZ_m": [
+    1402185.1,
+    828112.8,
+    598319.8
+   ],
+   "lonDeg": 30.565562,
+   "latDeg": 20.1740219,
+   "radiusM": 1734900.7,
+   "heightAboveSphereM": -2499.3,
+   "tm_x_m": -3826.51,
+   "tm_y_m": 611745.49,
+   "patchGrid_x_m": -4258078.82,
+   "patchGrid_y_m": 611743.94
+  },
+  {
+   "id": 10,
+   "name": "Station 4, East pan",
+   "bodyFixedXYZ_m": [
+    1400908.4,
+    829338.4,
+    599475.7
+   ],
+   "lonDeg": 30.6255517,
+   "latDeg": 20.215267,
+   "radiusM": 1734853.8,
+   "heightAboveSphereM": -2546.2,
+   "tm_x_m": -2118.46,
+   "tm_y_m": 612995.1,
+   "patchGrid_x_m": -4256369.43,
+   "patchGrid_y_m": 612994.62
+  },
+  {
+   "id": 11,
+   "name": "Station 4, West pan",
+   "bodyFixedXYZ_m": [
+    1400926.1,
+    829303.6,
+    599481.7
+   ],
+   "lonDeg": 30.6241804,
+   "latDeg": 20.2154814,
+   "radiusM": 1734853.5,
+   "heightAboveSphereM": -2546.5,
+   "tm_x_m": -2157.48,
+   "tm_y_m": 613001.62,
+   "patchGrid_x_m": -4256408.5,
+   "patchGrid_y_m": 613001.13
+  },
+  {
+   "id": 12,
+   "name": "Station 4, LRV/ center station 4",
+   "bodyFixedXYZ_m": [
+    1400926.7,
+    829306.9,
+    599477.2
+   ],
+   "lonDeg": 30.6242696,
+   "latDeg": 20.2153169,
+   "radiusM": 1734854.0,
+   "heightAboveSphereM": -2546.0,
+   "tm_x_m": -2154.94,
+   "tm_y_m": 612996.63,
+   "patchGrid_x_m": -4256405.96,
+   "patchGrid_y_m": 612996.14
+  },
+  {
+   "id": 13,
+   "name": "Station 5, East pan",
+   "bodyFixedXYZ_m": [
+    1399676.6,
+    831940.0,
+    598616.0
+   ],
+   "lonDeg": 30.7264097,
+   "latDeg": 20.1855656,
+   "radiusM": 1734808.3,
+   "heightAboveSphereM": -2591.7,
+   "tm_x_m": 751.64,
+   "tm_y_m": 612094.04,
+   "patchGrid_x_m": -4253495.52,
+   "patchGrid_y_m": 612093.98
+  },
+  {
+   "id": 14,
+   "name": "Station 5, West pan",
+   "bodyFixedXYZ_m": [
+    1399694.8,
+    831902.6,
+    598632.9
+   ],
+   "lonDeg": 30.7249512,
+   "latDeg": 20.1861289,
+   "radiusM": 1734810.9,
+   "heightAboveSphereM": -2589.1,
+   "tm_x_m": 710.13,
+   "tm_y_m": 612111.12,
+   "patchGrid_x_m": -4253537.08,
+   "patchGrid_y_m": 612111.06
+  },
+  {
+   "id": 15,
+   "name": "Station 5, LRV/ center station 5",
+   "bodyFixedXYZ_m": [
+    1399680.1,
+    831932.2,
+    598620.5
+   ],
+   "lonDeg": 30.7261109,
+   "latDeg": 20.1857162,
+   "radiusM": 1734808.9,
+   "heightAboveSphereM": -2591.1,
+   "tm_x_m": 743.14,
+   "tm_y_m": 612098.6,
+   "patchGrid_x_m": -4253504.04,
+   "patchGrid_y_m": 612098.55
+  },
+  {
+   "id": 16,
+   "name": "Station 6, North pan",
+   "bodyFixedXYZ_m": [
+    1397678.7,
+    833200.7,
+    601616.8
+   ],
+   "lonDeg": 30.8005134,
+   "latDeg": 20.2908005,
+   "radiusM": 1734840.6,
+   "heightAboveSphereM": -2559.4,
+   "tm_x_m": 2858.77,
+   "tm_y_m": 615285.92,
+   "patchGrid_x_m": -4251383.96,
+   "patchGrid_y_m": 615285.05
+  },
+  {
+   "id": 17,
+   "name": "Station 6, South_pan",
+   "bodyFixedXYZ_m": [
+    1397691.5,
+    833185.1,
+    601602.0
+   ],
+   "lonDeg": 30.7998108,
+   "latDeg": 20.2903076,
+   "radiusM": 1734838.3,
+   "heightAboveSphereM": -2561.7,
+   "tm_x_m": 2838.79,
+   "tm_y_m": 615270.96,
+   "patchGrid_x_m": -4251403.98,
+   "patchGrid_y_m": 615270.11
+  },
+  {
+   "id": 18,
+   "name": "Station 6, LRV/ center station 6",
+   "bodyFixedXYZ_m": [
+    1397690.3,
+    833189.6,
+    601590.2
+   ],
+   "lonDeg": 30.7999686,
+   "latDeg": 20.2899275,
+   "radiusM": 1734835.4,
+   "heightAboveSphereM": -2564.6,
+   "tm_x_m": 2843.29,
+   "tm_y_m": 615259.44,
+   "patchGrid_x_m": -4251399.49,
+   "patchGrid_y_m": 615258.58
+  },
+  {
+   "id": 19,
+   "name": "Station 7, North pan",
+   "bodyFixedXYZ_m": [
+    1397410.1,
+    833583.2,
+    601620.2
+   ],
+   "lonDeg": 30.8169255,
+   "latDeg": 20.2913043,
+   "radiusM": 1734809.2,
+   "heightAboveSphereM": -2590.8,
+   "tm_x_m": 3325.54,
+   "tm_y_m": 615301.51,
+   "patchGrid_x_m": -4250916.31,
+   "patchGrid_y_m": 615300.33
+  },
+  {
+   "id": 20,
+   "name": "Station 7, South pan",
+   "bodyFixedXYZ_m": [
+    1397413.3,
+    833582.2,
+    601604.0
+   ],
+   "lonDeg": 30.8168375,
+   "latDeg": 20.2907768,
+   "radiusM": 1734805.6,
+   "heightAboveSphereM": -2594.4,
+   "tm_x_m": 3323.05,
+   "tm_y_m": 615285.51,
+   "patchGrid_x_m": -4250918.81,
+   "patchGrid_y_m": 615284.34
+  },
+  {
+   "id": 21,
+   "name": "Station 7, LRV/ center station 7",
+   "bodyFixedXYZ_m": [
+    1397407.5,
+    833588.6,
+    601611.9
+   ],
+   "lonDeg": 30.8171357,
+   "latDeg": 20.291041,
+   "radiusM": 1734806.8,
+   "heightAboveSphereM": -2593.2,
+   "tm_x_m": 3331.53,
+   "tm_y_m": 615293.53,
+   "patchGrid_x_m": -4250910.32,
+   "patchGrid_y_m": 615292.35
+  },
+  {
+   "id": 22,
+   "name": "Station 8, East pan",
+   "bodyFixedXYZ_m": [
+    1396610.7,
+    835171.0,
+    601214.4
+   ],
+   "lonDeg": 30.8793572,
+   "latDeg": 20.277269,
+   "radiusM": 1734788.4,
+   "heightAboveSphereM": -2611.6,
+   "tm_x_m": 5101.66,
+   "tm_y_m": 614877.5,
+   "patchGrid_x_m": -4249137.34,
+   "patchGrid_y_m": 614874.73
+  },
+  {
+   "id": 23,
+   "name": "Station 8, West pan",
+   "bodyFixedXYZ_m": [
+    1396631.8,
+    835135.8,
+    601176.2
+   ],
+   "lonDeg": 30.8779123,
+   "latDeg": 20.276085,
+   "radiusM": 1734775.2,
+   "heightAboveSphereM": -2624.8,
+   "tm_x_m": 5060.6,
+   "tm_y_m": 614841.55,
+   "patchGrid_x_m": -4249178.51,
+   "patchGrid_y_m": 614838.83
+  },
+  {
+   "id": 24,
+   "name": "Station 8, LRV/ center station 8",
+   "bodyFixedXYZ_m": [
+    1396634.2,
+    835124.5,
+    601192.4
+   ],
+   "lonDeg": 30.8775274,
+   "latDeg": 20.2766297,
+   "radiusM": 1734777.3,
+   "heightAboveSphereM": -2622.7,
+   "tm_x_m": 5049.64,
+   "tm_y_m": 614858.06,
+   "patchGrid_x_m": -4249189.48,
+   "patchGrid_y_m": 614855.35
+  },
+  {
+   "id": 25,
+   "name": "Station 9, North pan",
+   "bodyFixedXYZ_m": [
+    1397669.4,
+    834236.3,
+    599944.9
+   ],
+   "lonDeg": 30.8319929,
+   "latDeg": 20.2330223,
+   "radiusM": 1734751.8,
+   "heightAboveSphereM": -2648.2,
+   "tm_x_m": 3755.49,
+   "tm_y_m": 613534.52,
+   "patchGrid_x_m": -4250486.96,
+   "patchGrid_y_m": 613533.02
+  },
+  {
+   "id": 26,
+   "name": "Station 9, South pan",
+   "bodyFixedXYZ_m": [
+    1397670.6,
+    834264.9,
+    599890.5
+   ],
+   "lonDeg": 30.8328357,
+   "latDeg": 20.2311572,
+   "radiusM": 1734747.7,
+   "heightAboveSphereM": -2652.3,
+   "tm_x_m": 3779.52,
+   "tm_y_m": 613477.98,
+   "patchGrid_x_m": -4250462.95,
+   "patchGrid_y_m": 613476.47
+  },
+  {
+   "id": 27,
+   "name": "Station 9, West pan",
+   "bodyFixedXYZ_m": [
+    1397684.8,
+    834225.1,
+    599924.8
+   ],
+   "lonDeg": 30.8313766,
+   "latDeg": 20.2323139,
+   "radiusM": 1734751.9,
+   "heightAboveSphereM": -2648.1,
+   "tm_x_m": 3737.97,
+   "tm_y_m": 613513.03,
+   "patchGrid_x_m": -4250504.53,
+   "patchGrid_y_m": 613511.54
+  },
+  {
+   "id": 28,
+   "name": "Station 9, LRV/ center station 9",
+   "bodyFixedXYZ_m": [
+    1397672.0,
+    834259.3,
+    599897.9
+   ],
+   "lonDeg": 30.8326412,
+   "latDeg": 20.2314056,
+   "radiusM": 1734748.7,
+   "heightAboveSphereM": -2651.3,
+   "tm_x_m": 3773.98,
+   "tm_y_m": 613485.51,
+   "patchGrid_x_m": -4250468.49,
+   "patchGrid_y_m": 613484.0
+  },
+  {
+   "id": 29,
+   "name": "Station 9, EP-5",
+   "bodyFixedXYZ_m": [
+    1397668.6,
+    834264.3,
+    599897.3
+   ],
+   "lonDeg": 30.8328537,
+   "latDeg": 20.2313911,
+   "radiusM": 1734748.2,
+   "heightAboveSphereM": -2651.8,
+   "tm_x_m": 3780.02,
+   "tm_y_m": 613485.08,
+   "patchGrid_x_m": -4250462.44,
+   "patchGrid_y_m": 613483.56
+  },
+  {
+   "id": 30,
+   "name": "LM",
+   "bodyFixedXYZ_m": [
+    1398943.1,
+    833000.6,
+    598756.0
+   ],
+   "lonDeg": 30.7716815,
+   "latDeg": 20.1909097,
+   "radiusM": 1734773.9,
+   "heightAboveSphereM": -2626.1,
+   "tm_x_m": 2040.05,
+   "tm_y_m": 612256.47,
+   "patchGrid_x_m": -4252205.52,
+   "patchGrid_y_m": 612256.03
+  },
+  {
+   "id": 31,
+   "name": "ALSEP C/S",
+   "bodyFixedXYZ_m": [
+    1399034.1,
+    832831.2,
+    598790.9
+   ],
+   "lonDeg": 30.7649211,
+   "latDeg": 20.1920881,
+   "radiusM": 1734778.0,
+   "heightAboveSphereM": -2622.0,
+   "tm_x_m": 1847.64,
+   "tm_y_m": 612292.12,
+   "patchGrid_x_m": -4252398.15,
+   "patchGrid_y_m": 612291.76
+  },
+  {
+   "id": 32,
+   "name": "ALSEP (North) Pan",
+   "bodyFixedXYZ_m": [
+    1399034.3,
+    832822.0,
+    598801.5
+   ],
+   "lonDeg": 30.7646394,
+   "latDeg": 20.1924684,
+   "radiusM": 1734777.4,
+   "heightAboveSphereM": -2622.6,
+   "tm_x_m": 1839.61,
+   "tm_y_m": 612303.65,
+   "patchGrid_x_m": -4252406.18,
+   "patchGrid_y_m": 612303.29
+  },
+  {
+   "id": 33,
+   "name": "ALSEP (Geo-3) Pan",
+   "bodyFixedXYZ_m": [
+    1399043.0,
+    832844.0,
+    598750.9
+   ],
+   "lonDeg": 30.765148,
+   "latDeg": 20.1906864,
+   "radiusM": 1734777.5,
+   "heightAboveSphereM": -2622.5,
+   "tm_x_m": 1854.11,
+   "tm_y_m": 612249.62,
+   "patchGrid_x_m": -4252391.69,
+   "patchGrid_y_m": 612249.26
+  },
+  {
+   "id": 34,
+   "name": "ALSEP (C/S) Pan",
+   "bodyFixedXYZ_m": [
+    1399032.3,
+    832831.8,
+    598793.4
+   ],
+   "lonDeg": 30.7649717,
+   "latDeg": 20.1921797,
+   "radiusM": 1734777.7,
+   "heightAboveSphereM": -2622.3,
+   "tm_x_m": 1849.07,
+   "tm_y_m": 612294.9,
+   "patchGrid_x_m": -4252396.71,
+   "patchGrid_y_m": 612294.54
+  },
+  {
+   "id": 35,
+   "name": "US flag",
+   "bodyFixedXYZ_m": [
+    1398941.0,
+    832993.0,
+    598773.4
+   ],
+   "lonDeg": 30.7714895,
+   "latDeg": 20.191514,
+   "radiusM": 1734774.6,
+   "heightAboveSphereM": -2625.4,
+   "tm_x_m": 2034.58,
+   "tm_y_m": 612274.79,
+   "patchGrid_x_m": -4252210.99,
+   "patchGrid_y_m": 612274.35
+  },
+  {
+   "id": 36,
+   "name": "SEP transmitter",
+   "bodyFixedXYZ_m": [
+    1398868.9,
+    833105.8,
+    598780.8
+   ],
+   "lonDeg": 30.7761983,
+   "latDeg": 20.1917917,
+   "radiusM": 1734773.2,
+   "heightAboveSphereM": -2626.8,
+   "tm_x_m": 2168.58,
+   "tm_y_m": 612283.27,
+   "patchGrid_x_m": -4252076.81,
+   "patchGrid_y_m": 612282.77
+  },
+  {
+   "id": 37,
+   "name": "G/M (geophone  module)",
+   "bodyFixedXYZ_m": [
+    1399036.5,
+    832833.5,
+    598781.8
+   ],
+   "lonDeg": 30.7649475,
+   "latDeg": 20.1917691,
+   "radiusM": 1734777.9,
+   "heightAboveSphereM": -2622.1,
+   "tm_x_m": 1848.39,
+   "tm_y_m": 612282.45,
+   "patchGrid_x_m": -4252397.4,
+   "patchGrid_y_m": 612282.09
+  },
+  {
+   "id": 38,
+   "name": "Geo-1",
+   "bodyFixedXYZ_m": [
+    1399006.7,
+    832873.5,
+    598787.9
+   ],
+   "lonDeg": 30.7666934,
+   "latDeg": 20.1920169,
+   "radiusM": 1734775.2,
+   "heightAboveSphereM": -2624.8,
+   "tm_x_m": 1898.08,
+   "tm_y_m": 612289.98,
+   "patchGrid_x_m": -4252347.65,
+   "patchGrid_y_m": 612289.6
+  },
+  {
+   "id": 39,
+   "name": "Geo-2",
+   "bodyFixedXYZ_m": [
+    1399065.3,
+    832793.7,
+    598773.8
+   ],
+   "lonDeg": 30.7632256,
+   "latDeg": 20.1914711,
+   "radiusM": 1734779.3,
+   "heightAboveSphereM": -2620.7,
+   "tm_x_m": 1799.39,
+   "tm_y_m": 612273.4,
+   "patchGrid_x_m": -4252446.46,
+   "patchGrid_y_m": 612273.05
+  },
+  {
+   "id": 40,
+   "name": "Geo-3",
+   "bodyFixedXYZ_m": [
+    1399042.3,
+    832841.9,
+    598755.7
+   ],
+   "lonDeg": 30.7650971,
+   "latDeg": 20.1908543,
+   "radiusM": 1734777.6,
+   "heightAboveSphereM": -2622.4,
+   "tm_x_m": 1852.66,
+   "tm_y_m": 612254.71,
+   "patchGrid_x_m": -4252393.14,
+   "patchGrid_y_m": 612254.35
+  },
+  {
+   "id": 41,
+   "name": "Geo-4",
+   "bodyFixedXYZ_m": [
+    1399051.6,
+    832862.5,
+    598703.4
+   ],
+   "lonDeg": 30.7655526,
+   "latDeg": 20.1890218,
+   "radiusM": 1734777.0,
+   "heightAboveSphereM": -2623.0,
+   "tm_x_m": 1865.64,
+   "tm_y_m": 612199.15,
+   "patchGrid_x_m": -4252380.16,
+   "patchGrid_y_m": 612198.78
+  },
+  {
+   "id": 42,
+   "name": "EP-1",
+   "bodyFixedXYZ_m": [
+    1400265.2,
+    830366.2,
+    599494.4
+   ],
+   "lonDeg": 30.6682114,
+   "latDeg": 20.2161826,
+   "radiusM": 1734832.6,
+   "heightAboveSphereM": -2567.4,
+   "tm_x_m": -904.55,
+   "tm_y_m": 613022.48,
+   "patchGrid_x_m": -4255153.86,
+   "patchGrid_y_m": 613022.39
+  },
+  {
+   "id": 43,
+   "name": "EP-2",
+   "bodyFixedXYZ_m": [
+    1398841.6,
+    833155.8,
+    598772.1
+   ],
+   "lonDeg": 30.7782016,
+   "latDeg": 20.1914977,
+   "radiusM": 1734772.2,
+   "heightAboveSphereM": -2627.8,
+   "tm_x_m": 2225.6,
+   "tm_y_m": 612274.38,
+   "patchGrid_x_m": -4252019.73,
+   "patchGrid_y_m": 612273.86
+  },
+  {
+   "id": 44,
+   "name": "EP-3",
+   "bodyFixedXYZ_m": [
+    1398886.5,
+    833076.8,
+    598779.6
+   ],
+   "lonDeg": 30.7750046,
+   "latDeg": 20.1917512,
+   "radiusM": 1734773.0,
+   "heightAboveSphereM": -2627.0,
+   "tm_x_m": 2134.61,
+   "tm_y_m": 612282.03,
+   "patchGrid_x_m": -4252110.83,
+   "patchGrid_y_m": 612281.55
+  },
+  {
+   "id": 45,
+   "name": "EP-4",
+   "bodyFixedXYZ_m": [
+    1399164.0,
+    832684.0,
+    598705.9
+   ],
+   "lonDeg": 30.758132,
+   "latDeg": 20.1890391,
+   "radiusM": 1734782.8,
+   "heightAboveSphereM": -2617.2,
+   "tm_x_m": 1654.45,
+   "tm_y_m": 612199.6,
+   "patchGrid_x_m": -4252591.61,
+   "patchGrid_y_m": 612199.31
+  },
+  {
+   "id": 46,
+   "name": "EP-5",
+   "bodyFixedXYZ_m": [
+    1397668.6,
+    834264.3,
+    599897.3
+   ],
+   "lonDeg": 30.8328537,
+   "latDeg": 20.2313911,
+   "radiusM": 1734748.2,
+   "heightAboveSphereM": -2651.8,
+   "tm_x_m": 3780.02,
+   "tm_y_m": 613485.08,
+   "patchGrid_x_m": -4250462.44,
+   "patchGrid_y_m": 613483.56
+  },
+  {
+   "id": 47,
+   "name": "EP-6",
+   "bodyFixedXYZ_m": [
+    1399023.7,
+    833539.9,
+    597789.1
+   ],
+   "lonDeg": 30.7865335,
+   "latDeg": 20.157002,
+   "radiusM": 1734764.5,
+   "heightAboveSphereM": -2635.5,
+   "tm_x_m": 2463.27,
+   "tm_y_m": 611228.48,
+   "patchGrid_x_m": -4251782.31,
+   "patchGrid_y_m": 611227.84
+  },
+  {
+   "id": 48,
+   "name": "EP-7",
+   "bodyFixedXYZ_m": [
+    1398916.0,
+    833411.2,
+    598223.0
+   ],
+   "lonDeg": 30.7845828,
+   "latDeg": 20.1722579,
+   "radiusM": 1734765.4,
+   "heightAboveSphereM": -2634.6,
+   "tm_x_m": 2407.51,
+   "tm_y_m": 611691.06,
+   "patchGrid_x_m": -4251837.9,
+   "patchGrid_y_m": 611690.44
+  },
+  {
+   "id": 49,
+   "name": "EP-8",
+   "bodyFixedXYZ_m": [
+    1399109.4,
+    832780.1,
+    598690.8
+   ],
+   "lonDeg": 30.7620206,
+   "latDeg": 20.1885456,
+   "radiusM": 1734779.7,
+   "heightAboveSphereM": -2620.3,
+   "tm_x_m": 1765.13,
+   "tm_y_m": 612184.67,
+   "patchGrid_x_m": -4252480.8,
+   "patchGrid_y_m": 612184.34
+  },
+  {
+   "id": 50,
+   "name": "RTG",
+   "bodyFixedXYZ_m": [
+    1399032.0,
+    832833.5,
+    598792.3
+   ],
+   "lonDeg": 30.7650285,
+   "latDeg": 20.1921387,
+   "radiusM": 1734777.9,
+   "heightAboveSphereM": -2622.1,
+   "tm_x_m": 1850.69,
+   "tm_y_m": 612293.66,
+   "patchGrid_x_m": -4252395.09,
+   "patchGrid_y_m": 612293.3
+  },
+  {
+   "id": 51,
+   "name": "LEAM",
+   "bodyFixedXYZ_m": [
+    1399032.2,
+    832837.6,
+    598785.8
+   ],
+   "lonDeg": 30.7651489,
+   "latDeg": 20.1919113,
+   "radiusM": 1734777.8,
+   "heightAboveSphereM": -2622.2,
+   "tm_x_m": 1854.12,
+   "tm_y_m": 612286.77,
+   "patchGrid_x_m": -4252391.66,
+   "patchGrid_y_m": 612286.4
+  },
+  {
+   "id": 52,
+   "name": "LACE",
+   "bodyFixedXYZ_m": [
+    1399025.8,
+    832840.8,
+    598795.6
+   ],
+   "lonDeg": 30.7653608,
+   "latDeg": 20.1922591,
+   "radiusM": 1734777.6,
+   "heightAboveSphereM": -2622.4,
+   "tm_x_m": 1860.15,
+   "tm_y_m": 612297.32,
+   "patchGrid_x_m": -4252385.62,
+   "patchGrid_y_m": 612296.95
+  },
+  {
+   "id": 53,
+   "name": "LSG",
+   "bodyFixedXYZ_m": [
+    1399037.2,
+    832823.4,
+    598794.4
+   ],
+   "lonDeg": 30.7646295,
+   "latDeg": 20.1922117,
+   "radiusM": 1734778.0,
+   "heightAboveSphereM": -2622.0,
+   "tm_x_m": 1839.33,
+   "tm_y_m": 612295.87,
+   "patchGrid_x_m": -4252406.46,
+   "patchGrid_y_m": 612295.51
+  },
+  {
+   "id": 54,
+   "name": "LSP",
+   "bodyFixedXYZ_m": [
+    1399035.6,
+    832822.8,
+    598798.6
+   ],
+   "lonDeg": 30.7646401,
+   "latDeg": 20.1923611,
+   "radiusM": 1734777.9,
+   "heightAboveSphereM": -2622.1,
+   "tm_x_m": 1839.64,
+   "tm_y_m": 612300.4,
+   "patchGrid_x_m": -4252406.16,
+   "patchGrid_y_m": 612300.04
+  },
+  {
+   "id": 55,
+   "name": "HFE",
+   "bodyFixedXYZ_m": [
+    1399030.1,
+    832830.4,
+    598799.6
+   ],
+   "lonDeg": 30.764969,
+   "latDeg": 20.1924016,
+   "radiusM": 1734777.4,
+   "heightAboveSphereM": -2622.6,
+   "tm_x_m": 1848.99,
+   "tm_y_m": 612301.63,
+   "patchGrid_x_m": -4252396.79,
+   "patchGrid_y_m": 612301.27
+  }
+ ]
+}

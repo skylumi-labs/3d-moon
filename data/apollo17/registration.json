@@ -1,0 +1,364 @@
+{
+ "sunFit": {
+  "azFromNorthDeg": -110.0,
+  "elDeg": 20.0,
+  "meanZNCC": 0.19179392058258682,
+  "nominalAz": -113.7,
+  "nominalEl": 44.81,
+  "nominalMeanZNCC": 0.18671854412013703
+ },
+ "frame": "package TM, metres; shift = metres the SECOND-named image must be moved (east, north) to coincide with the first. p25 = 25 cm image, ortho50 = 0.5 m orthomosaic, dtm = 1.5 m DTM hillshaded, patchDTM/patchL0 = existing a17 patch (ASU 2 m DTM, 0.6 m ortho).",
+ "windows": [
+  {
+   "window": "LM",
+   "xc": 2040.05,
+   "yc": 612256.47,
+   "reliefStdM": 2.6,
+   "ortho50_vs_p25_shift_m": [
+    0.42,
+    0.6
+   ],
+   "zncc_p25_ortho_before": 0.772,
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -11.45,
+    -4.1
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": 0.42,
+   "patchDTM_minus_haaseDTM_std_m": 0.88,
+   "patchL0_vs_ortho50_shift_m": [
+    -13.2,
+    -7.72
+   ],
+   "patchL0_vs_p25_shift_m": [
+    -12.5,
+    -7.12
+   ]
+  },
+  {
+   "window": "ALSEP C/S",
+   "xc": 1847.64,
+   "yc": 612292.12,
+   "reliefStdM": 2.4,
+   "ortho50_vs_p25_shift_m": [
+    0.57,
+    0.53
+   ],
+   "zncc_p25_ortho_before": 0.781,
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -12.55,
+    -8.4
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": 0.42,
+   "patchDTM_minus_haaseDTM_std_m": 0.81,
+   "patchL0_vs_ortho50_shift_m": [
+    -13.0,
+    -7.67
+   ],
+   "patchL0_vs_p25_shift_m": [
+    -12.38,
+    -7.17
+   ]
+  },
+  {
+   "window": "SEP transmitter",
+   "xc": 2168.58,
+   "yc": 612283.27,
+   "reliefStdM": 3.9,
+   "ortho50_vs_p25_shift_m": [
+    0.17,
+    0.62
+   ],
+   "zncc_p25_ortho_before": 0.772,
+   "dtm_vs_p25_shift_m": [
+    0.17,
+    2.1
+   ],
+   "zncc_p25_dtm_before": 0.212,
+   "dtm_vs_ortho50_shift_m": [
+    -1.15,
+    1.02
+   ],
+   "ortho_fit_sun": [
+    -96,
+    50
+   ],
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -10.38,
+    -0.15
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": 0.74,
+   "patchDTM_minus_haaseDTM_std_m": 1.08,
+   "patchL0_vs_ortho50_shift_m": [
+    -13.4,
+    -7.78
+   ],
+   "patchL0_vs_p25_shift_m": [
+    -13.07,
+    -7.17
+   ]
+  },
+  {
+   "window": "Geo-4",
+   "xc": 1865.64,
+   "yc": 612199.15,
+   "reliefStdM": 2.1,
+   "ortho50_vs_p25_shift_m": [
+    0.53,
+    0.53
+   ],
+   "zncc_p25_ortho_before": 0.77,
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -7.28,
+    -9.75
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": 0.46,
+   "patchDTM_minus_haaseDTM_std_m": 0.49,
+   "patchL0_vs_ortho50_shift_m": [
+    -13.0,
+    -7.72
+   ],
+   "patchL0_vs_p25_shift_m": [
+    -12.38,
+    -7.2
+   ]
+  },
+  {
+   "window": "EP-8",
+   "xc": 1765.13,
+   "yc": 612184.67,
+   "reliefStdM": 2.2,
+   "ortho50_vs_p25_shift_m": [
+    0.53,
+    0.47
+   ],
+   "zncc_p25_ortho_before": 0.842,
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -12.2,
+    -10.18
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": 0.43,
+   "patchDTM_minus_haaseDTM_std_m": 0.5,
+   "patchL0_vs_ortho50_shift_m": [
+    -12.95,
+    -7.7
+   ],
+   "patchL0_vs_p25_shift_m": [
+    -12.4,
+    -7.2
+   ]
+  },
+  {
+   "window": "EP-4",
+   "xc": 1654.45,
+   "yc": 612199.6,
+   "reliefStdM": 2.3,
+   "ortho50_vs_p25_shift_m": [
+    0.4,
+    0.42
+   ],
+   "zncc_p25_ortho_before": 0.854,
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -11.97,
+    -9.2
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": 0.39,
+   "patchDTM_minus_haaseDTM_std_m": 0.58,
+   "patchL0_vs_ortho50_shift_m": [
+    -12.95,
+    -7.67
+   ],
+   "patchL0_vs_p25_shift_m": [
+    -12.55,
+    -7.22
+   ]
+  },
+  {
+   "window": "strip-y606800",
+   "xc": 1900.0,
+   "yc": 606800.0,
+   "reliefStdM": 28.2,
+   "ortho50_vs_p25_shift_m": [
+    13.75,
+    0.68
+   ],
+   "zncc_p25_ortho_before": -0.072,
+   "dtm_vs_p25_shift_m": [
+    16.73,
+    2.35
+   ],
+   "zncc_p25_dtm_before": -0.1,
+   "dtm_vs_ortho50_shift_m": [
+    3.27,
+    1.35
+   ],
+   "ortho_fit_sun": [
+    -96,
+    20
+   ]
+  },
+  {
+   "window": "strip-y608300",
+   "xc": 1900.0,
+   "yc": 608300.0,
+   "reliefStdM": 10.7,
+   "ortho50_vs_p25_shift_m": [
+    -0.4,
+    0.3
+   ],
+   "zncc_p25_ortho_before": 0.263,
+   "dtm_vs_p25_shift_m": [
+    -1.45,
+    1.65
+   ],
+   "zncc_p25_dtm_before": 0.176,
+   "dtm_vs_ortho50_shift_m": [
+    0.72,
+    1.12
+   ],
+   "ortho_fit_sun": [
+    -108,
+    40
+   ]
+  },
+  {
+   "window": "strip-y609800",
+   "xc": 1900.0,
+   "yc": 609800.0,
+   "reliefStdM": 13.7,
+   "ortho50_vs_p25_shift_m": [
+    1.25,
+    0.65
+   ],
+   "zncc_p25_ortho_before": 0.161,
+   "dtm_vs_p25_shift_m": [
+    6.17,
+    3.27
+   ],
+   "zncc_p25_dtm_before": 0.014,
+   "dtm_vs_ortho50_shift_m": [
+    -0.47,
+    2.25
+   ],
+   "ortho_fit_sun": [
+    -108,
+    40
+   ],
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -0.15,
+    -2.17
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": 0.75,
+   "patchDTM_minus_haaseDTM_std_m": 2.97
+  },
+  {
+   "window": "strip-y611300",
+   "xc": 1900.0,
+   "yc": 611300.0,
+   "reliefStdM": 19.6,
+   "ortho50_vs_p25_shift_m": [
+    0.42,
+    0.45
+   ],
+   "zncc_p25_ortho_before": 0.18,
+   "dtm_vs_p25_shift_m": [
+    1.52,
+    4.0
+   ],
+   "zncc_p25_dtm_before": 0.07,
+   "dtm_vs_ortho50_shift_m": [
+    3.02,
+    1.35
+   ],
+   "ortho_fit_sun": [
+    -108,
+    40
+   ],
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -0.12,
+    -0.1
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": -0.98,
+   "patchDTM_minus_haaseDTM_std_m": 3.78,
+   "patchL0_vs_ortho50_shift_m": [
+    -12.82,
+    -7.9
+   ],
+   "patchL0_vs_p25_shift_m": [
+    -13.57,
+    -7.53
+   ]
+  },
+  {
+   "window": "strip-y612800",
+   "xc": 1900.0,
+   "yc": 612800.0,
+   "reliefStdM": 2.7,
+   "ortho50_vs_p25_shift_m": [
+    0.2,
+    0.53
+   ],
+   "zncc_p25_ortho_before": 0.769,
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -12.47,
+    -8.62
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": 0.27,
+   "patchDTM_minus_haaseDTM_std_m": 0.8,
+   "patchL0_vs_ortho50_shift_m": [
+    -12.97,
+    -7.55
+   ],
+   "patchL0_vs_p25_shift_m": [
+    -12.72,
+    -7.03
+   ]
+  },
+  {
+   "window": "strip-y614300",
+   "xc": 1900.0,
+   "yc": 614300.0,
+   "reliefStdM": 2.4,
+   "ortho50_vs_p25_shift_m": [
+    -0.3,
+    0.53
+   ],
+   "zncc_p25_ortho_before": 0.883,
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -13.05,
+    -8.07
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": -0.1,
+   "patchDTM_minus_haaseDTM_std_m": 0.68
+  },
+  {
+   "window": "strip-y615800",
+   "xc": 1900.0,
+   "yc": 615800.0,
+   "reliefStdM": 40.0,
+   "ortho50_vs_p25_shift_m": [
+    -11.62,
+    0.55
+   ],
+   "zncc_p25_ortho_before": -0.074,
+   "dtm_vs_p25_shift_m": [
+    -8.4,
+    1.57
+   ],
+   "zncc_p25_dtm_before": -0.084,
+   "dtm_vs_ortho50_shift_m": [
+    3.05,
+    1.02
+   ],
+   "ortho_fit_sun": [
+    -108,
+    20
+   ],
+   "patchDTM_vs_haaseDTM_shift_m": [
+    -12.47,
+    -0.0
+   ],
+   "patchDTM_minus_haaseDTM_mean_height_m": -4.0,
+   "patchDTM_minus_haaseDTM_std_m": 0.76
+  }
+ ]
+}

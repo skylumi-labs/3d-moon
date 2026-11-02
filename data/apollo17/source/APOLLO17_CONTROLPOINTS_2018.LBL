@@ -1,0 +1,101 @@
+PDS_VERSION_ID        = PDS3
+LABEL_REVISION_NOTE   = "L.GADDIS, 01-Mar-2018"
+RECORD_TYPE           = FIXED_LENGTH
+RECORD_BYTES          =  77
+FILE_RECORDS          =  55
+FILE_NAME             = "APOLLO17_CONTROLPOINTS_2018.TAB"
+DATA_SET_ID           = "XXX"
+DATA_SET_NAME         = "XXX"
+PRODUCT_ID            = "CONTROL_POINTS_MOON_APOLLO17"
+INSTRUMENT_HOST_NAME  = "LUNAR RECONNAISSANCE ORBITER"
+INSTRUMENT_HOST_ID    = "LRO"
+INSTRUMENT_NAME       = "LUNAR RECONNAISSANCE ORBITER CAMERA"
+INSTRUMENT_ID         = "LROC"
+REFERENCE_TARGET_NAME = "MOON"
+START_TIME            = "N/A"
+STOP_TIME             = "N/A"
+SPACECRAFT_CLOCK_START_COUNT = "N/A"
+SPACECRAFT_CLOCK_STOP_COUNT  = "N/A"
+PRODUCT_CREATION_TIME        = 2018-03-01T12:00:00.000Z
+^TABLE                = "APOLLO17_CONTROLPOINTS_2018.TAB"
+OBJECT                = TABLE
+  INTERCHANGE_FORMAT  = ASCII
+  INDEX_TYPE          = SINGLE                  
+  NAME                = "CONTROL POINTS"
+  DESCRIPTION         = "This table contains the controlled object point 
+                         coordinates of the Apollo17 landing site.
+                         For more info see [HAASEETAL2018].
+                        "
+  ROWS                = 55
+  ROW_BYTES           = 77
+  COLUMNS             = 5
+  OBJECT              = COLUMN
+    COLUMN_NUMBER     = 1
+    NAME              = POINT_NUMBER
+    START_BYTE        = 1
+    BYTES             = 4
+    DATA_TYPE         = INTEGER
+    FORMAT            = "I4"
+    DESCRIPTION       = "
+                     The index number of the control point.
+                        "
+  END_OBJECT          = COLUMN
+
+  OBJECT              = COLUMN
+    COLUMN_NUMBER     = 2
+    NAME              = X_COORDINATE
+    DATA_TYPE         = REAL
+    START_BYTE        = 6
+    BYTES             = 11
+    FORMAT            = "F11.1"
+    UNIT              = METER
+    DESCRIPTION       = "
+                    The X coordinate of the point in the body fixed
+                    coordinate frame.
+                        "
+  END_OBJECT          = COLUMN
+  
+  OBJECT              = COLUMN
+    COLUMN_NUMBER     = 3
+    NAME              = Y_COORDINATE
+    DATA_TYPE         = REAL
+    START_BYTE        = 19
+    BYTES             = 11
+    FORMAT            = "F11.1"
+    UNIT              = METER
+    DESCRIPTION       = "
+                    The Y coordinate of the point in the body fixed
+                    coordinate frame.
+                        "
+  END_OBJECT          = COLUMN
+  OBJECT              = COLUMN
+    COLUMN_NUMBER     = 4
+    NAME              = Z_COORDINATE
+    DATA_TYPE         = REAL
+    START_BYTE        = 32
+    BYTES             = 11
+    FORMAT            = "F11.1"
+    UNIT              = METER
+    DESCRIPTION       = "
+                    The Z coordinate of the point in the body fixed
+                    coordinate frame.
+                        "
+  END_OBJECT          = COLUMN
+
+  END_OBJECT          = COLUMN
+  OBJECT              = COLUMN
+    COLUMN_NUMBER     = 5
+    NAME              = POINT_DESCRIPTION
+    DATA_TYPE         = CHARACTER
+    START_BYTE        = 47
+    BYTES             = 32
+    FORMAT            = "A32"
+    UNIT              = N/A
+    DESCRIPTION       = "
+                    The correlation between the index number and the 
+                    names used within the maps of the stations.
+                        "
+  END_OBJECT          = COLUMN
+    
+END_OBJECT            = CONTROLNET_TABLE
+END

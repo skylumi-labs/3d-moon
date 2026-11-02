@@ -1,0 +1,33 @@
+name: dco
+# Every commit in a pull request carries a Signed-off-by line (CONTRIBUTING.md). No third-party action, no secrets, read-only token:
+# it runs the same for pull requests from forks.
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  dco:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check Signed-off-by on every commit
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          bad=0
+          for c in $(git rev-list --no-merges "$BASE..$HEAD"); do
+            if ! git log -1 --format=%B "$c" | grep -qiE '^Signed-off-by: .+ <[^>]+@[^>]+>$'; then
+              echo "::error::commit $(git log -1 --format='%h %s' "$c") has no Signed-off-by line"
+              bad=1
+            fi
+          done
+          if [ "$bad" -ne 0 ]; then
+            echo "Sign off with: git rebase --signoff $BASE && git push --force-with-lease (see CONTRIBUTING.md)"
+            exit 1
+          fi
+          echo "every commit is signed off"

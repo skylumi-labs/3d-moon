@@ -1,0 +1,64 @@
+name: cla
+# The pull request description must tick the CLA box (CLA.md, CONTRIBUTING.md). Editing the description re-runs this check.
+# Exempt: the repository OWNER association, the maintainers listed by numeric GitHub user id in MAINTAINER_IDS below (an id cannot be
+# taken over by renaming an account), and Dependabot pull requests whose commits are all by Dependabot. Organisation membership is not an exemption.
+# Only the pull request author may add the tick: on an edit that adds it, the editor must be the author.
+# Read-only token, no secrets, no third-party action. Values from the event reach the script through env, never interpolated into run:.
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  cla:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the CLA box
+        env:
+          BODY: ${{ github.event.pull_request.body }}
+          OLD_BODY: ${{ github.event.changes.body.from }}
+          ACTION: ${{ github.event.action }}
+          SENDER: ${{ github.event.sender.login }}
+          SENDER_ID: ${{ github.event.sender.id }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          AUTHOR_ID: ${{ github.event.pull_request.user.id }}
+          ASSOCIATION: ${{ github.event.pull_request.author_association }}
+          PR: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+          CLA_VERSION: "1.1"
+          MAINTAINER_IDS: "8931623"
+        run: |
+          set -euo pipefail
+          summary() { printf 'CLA check: author %s (id %s), PR #%s, head %s, CLA version %s, %s, %s\n' "$AUTHOR" "$AUTHOR_ID" "$PR" "$HEAD_SHA" "$CLA_VERSION" "$1" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" | tee -a "${GITHUB_STEP_SUMMARY:-/dev/null}"; }
+          # A tick counts only as a task-list line outside HTML comments and fenced code, ending with the exact sentence.
+          has_tick() {
+            python3 -c '
+          import os, re, sys
+          t = sys.stdin.read().replace("\r", "")
+          t = re.sub(r"<!--.*?-->", "", t, flags=re.S)
+          t = re.sub(r"^[ ]{0,3}(`{3,}|~{3,}).*?(^[ ]{0,3}\1[`~]*[ \t]*$|\Z)", "", t, flags=re.S | re.M)
+          v = re.escape(os.environ["CLA_VERSION"])
+          rx = re.compile(r"^[ \t]*[-*][ \t]+\[[xX]\][ \t]+I have read CLA\.md \(version " + v + r"\) and agree to it for this contribution[ \t]*$", re.M)
+          sys.exit(0 if rx.search(t) else 1)'
+          }
+          if [ "$ASSOCIATION" = "OWNER" ]; then summary "repository owner: exempt"; exit 0; fi
+          for id in $MAINTAINER_IDS; do
+            if [ "$AUTHOR_ID" = "$id" ]; then summary "maintainer id $id: exempt"; exit 0; fi
+          done
+          if [ "$AUTHOR" = "dependabot[bot]" ]; then
+            others=$(gh api --paginate "repos/$REPO/pulls/$PR/commits" -q '.[] | select(.author.login != "dependabot[bot]") | .sha' | wc -l)
+            if [ "$others" -eq 0 ]; then summary "Dependabot with only Dependabot commits: exempt"; exit 0; fi
+            echo "::error::A commit on this Dependabot pull request is not by Dependabot; the author must tick the CLA box."
+          fi
+          if ! printf '%s\n' "$BODY" | has_tick; then
+            echo "::error::Tick \"I have read CLA.md (version $CLA_VERSION) and agree to it for this contribution\" in the pull request description, as a task-list line outside comments and code blocks (see CONTRIBUTING.md)."
+            exit 1
+          fi
+          if [ "$ACTION" = "edited" ] && ! printf '%s\n' "$OLD_BODY" | has_tick && [ "$SENDER_ID" != "$AUTHOR_ID" ]; then
+            echo "::error::$SENDER added the CLA tick to a pull request by $AUTHOR. Only the author may tick the box."
+            exit 1
+          fi
+          summary "$AUTHOR ticked the CLA box"

@@ -1,0 +1,158 @@
+/*
+ * Optional on-screen flight controls. Closed until asked for (the toggle is the last icon of the bar, or in the More sheet while manual navigation is on),
+ * open by itself on a desktop while the visitor moves by hand (touchControlsLogic.ts padOpenFor). Open, one COMPLETE group, at every width:
+ *   [ look up | down ] | [ - + ] | [ stick ]   (the Orbit | Turn switch went on 2026-10-31; the dividers are .tc-sep)
+ * On a wide screen it stands in the bar's row (src/ui/dockRow.ts padFitsRow); everywhere else it has a glass row of its own right above the bar (.bar-padrow, bar.css),
+ * the groups spread across it with no dead space. In the bar's row the pad is 42 px tall (the pairs drop their border there, item E); in the pad row the halves are 44 px tall at every width.
+ * Material: dark glass that holds its own over the Sun's glare. The sizes are the numbers dockRow.ts models; scripts/touch-layout.test.mts checks they agree.
+ * A mount without a bar keeps the group above a corner anchor (.touch-ctl.above).
+ */
+:root {
+  --tc-h: 42px; --tc-cap-extra: 2px; --tc-half: 40px; --tc-stick: 48px; --tc-knob: 26px; --tc-gap: 6px;
+  --tc-safe-r: env(safe-area-inset-right, 0px);
+}
+@media (max-width: 399px) {
+  :root { --tc-stick: 42px; --tc-knob: 22px; --tc-gap: 4px; }
+}
+.touch-ctl, .touch-ctl-pad, .bar-padrow, .bar-more .tc-surface {
+  --tc-glass: rgba(16, 18, 26, 0.64);
+  --tc-glass-blur: blur(16px) saturate(1.4) brightness(0.82);
+  --tc-edge: rgba(255, 255, 255, 0.14);
+  --tc-edge-dark: 0 0 0 0.5px rgba(0, 0, 0, 0.55);
+  --tc-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --tc-ink: #f5f7fb;
+  --tc-ink-dim: rgba(245, 247, 251, 0.55);
+  --tc-accent: #9cc2ff;
+  --tc-press-fill: rgba(255, 255, 255, 0.12);
+  --tc-glyph-shadow: drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.6));
+  --tc-r-capsule: 18px;
+  --tc-r-seg: 16px;
+  --tc-spring: cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+/* The anchor for the fallback: a point over the dock's right end. Empty while the pad is in the row. */
+.touch-ctl {
+  position: absolute; right: calc(8px + var(--tc-safe-r)); bottom: calc(var(--dock-top, 0px) + 8px); z-index: 3; width: 0; height: 0;
+  pointer-events: none; text-shadow: none; transition: bottom 0.22s ease;
+  font: 600 0.75rem/1 -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif; letter-spacing: -0.01em;
+}
+.touch-ctl-fixed { position: fixed; right: calc(8px + var(--tc-safe-r)); bottom: calc(env(safe-area-inset-bottom, 0px) + 8px); pointer-events: none; }
+.touch-ctl-pad { display: flex; align-items: center; gap: var(--tc-gap); flex: none; margin: 0 4px; pointer-events: none; text-shadow: none; }
+.touch-ctl-pad[hidden] { display: none; }
+.touch-ctl.above .touch-ctl-pad { position: absolute; right: 0; bottom: 0; margin: 0; }
+/* In the row the separator's own margins are the space (dockRow.ts counts no more). */
+.bar .touch-ctl-pad { margin: 0; }
+/* The pad's own row: the groups spread edge to edge, the sizes are dockRow.ts padRowSizes. */
+.bar-padrow .touch-ctl-pad { margin: 0; flex: 1 1 auto; justify-content: space-evenly; gap: var(--tc-gap); }
+.bar-padrow { --tc-half: 44px; --tc-h: 44px; --tc-stick: 44px; }
+@media (max-width: 359px) { .bar-padrow { --tc-gap: 2px; } }
+
+/* Glass: every control surface. No surface is accent-filled at rest. */
+.tc-surface {
+  box-sizing: border-box; margin: 0; padding: 0; pointer-events: auto; color: var(--tc-ink);
+  -webkit-backdrop-filter: var(--tc-glass-blur); backdrop-filter: var(--tc-glass-blur);
+  background: var(--tc-glass); border: 1px solid var(--tc-edge);
+  box-shadow: var(--tc-edge-dark), var(--tc-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  touch-action: none; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+}
+/* In the bar's row the bar is the glass: the pad's parts are only a light tint on it. */
+.bar .tc-surface, .bar-padrow .tc-surface { background: rgba(255, 255, 255, 0.07); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
+.touch-ctl-pad svg, .tc-toggle svg { filter: var(--tc-glyph-shadow); pointer-events: none; }
+.touch-ctl-pad button { font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; }
+.touch-ctl-pad button:focus-visible, .tc-stick:focus-visible { outline: 2px solid var(--tc-accent); outline-offset: 2px; }
+
+/* The toggle: a hand glyph while closed, a chevron while open. In the bar it is one more icon button (bar.css); alone it is a round glass button at the corner. */
+.tc-toggle { position: relative; transition: background-color 0.2s ease; font: inherit; color: var(--tc-ink); cursor: pointer; }
+.tc-toggle:not(.in-bar) { width: 44px; height: 44px; border-radius: 50%; display: block; pointer-events: auto; }
+.tc-toggle .tc-ico { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; transition: transform 0.2s var(--tc-spring), opacity 0.2s ease; }
+.tc-toggle .tc-ico svg { width: 22px; height: 22px; display: block; }
+.tc-toggle .tc-ico.close { opacity: 0; transform: rotate(180deg); }
+.tc-toggle[aria-pressed='true'] .tc-ico.open { opacity: 0; transform: rotate(-90deg); }
+.tc-toggle[aria-pressed='true'] .tc-ico.close { opacity: 1; transform: none; }
+.tc-toggle:focus-visible { outline: 2px solid var(--tc-accent); outline-offset: -2px; }
+
+/* Open / close: the parts fade in. */
+.tc-item { opacity: 0; transition: opacity 0.14s ease-in, scale 0.32s var(--tc-spring); }
+.touch-ctl-pad[data-open] .tc-item { opacity: 1; transition: opacity 0.18s ease-out, scale 0.32s var(--tc-spring); }
+
+/* The zoom pair and the tilt pair: two opposite directions in one pill, side by side, a hairline between. */
+.tc-cap { position: relative; display: flex; flex-direction: row; width: calc(2 * var(--tc-half) + var(--tc-cap-extra)); height: var(--tc-h); border-radius: var(--tc-r-capsule); }
+.tc-cap .lbl { display: none; }
+.tc-half {
+  flex: 1 1 0; min-width: 0; height: 100%; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; border: 0; background: transparent;
+  touch-action: none; user-select: none; -webkit-tap-highlight-color: transparent; transition: background-color 0.12s ease, color 0.12s ease;
+}
+.tc-half:first-child { border-radius: var(--tc-r-capsule) 0 0 var(--tc-r-capsule); }
+.tc-half:last-child { border-radius: 0 var(--tc-r-capsule) var(--tc-r-capsule) 0; border-left: 1px solid var(--tc-edge); }
+.tc-half svg { width: 18px; height: 18px; }
+.tc-half[data-down] { background: var(--tc-press-fill); color: var(--tc-accent); }
+.tc-cap:has(.tc-half[data-down]) { scale: 0.97; transition: opacity 0.18s ease-out, scale 0.11s ease-out; }
+
+/* The toggle in the More sheet (bar.ts moves it there while manual navigation is on): a labelled item like the sheet's others, one icon, no slide. */
+.bar-more .tc-toggle .tc-ico { position: static; margin: 0; transform: none; opacity: 1; transition: none; }
+.bar-more .tc-toggle .tc-ico.close, .bar-more .tc-toggle[aria-pressed='true'] .tc-ico.open { display: none; }
+
+/* The stick: a glass disc, four edge chevrons, a knob that follows the thumb, and a rim arc that points the way it is pushed. */
+.tc-stick { --m: 0; --a: 0; position: relative; flex: none; width: var(--tc-stick); height: var(--tc-stick); border-radius: 50%; cursor: grab; }
+.tc-stick[data-down] { cursor: grabbing; }
+.tc-stick .rim { position: absolute; inset: 0; width: 100%; height: 100%; opacity: var(--m); transform: rotate(calc(var(--a) * 1deg - 120deg)); }
+.tc-stick .rim circle { fill: none; stroke: var(--tc-accent); stroke-width: 2; stroke-linecap: round; }
+.tc-stick .g { position: absolute; width: 8px; height: 8px; color: var(--tc-ink-dim); pointer-events: none; transition: opacity 0.2s ease; }
+.tc-stick .g svg { width: 8px; height: 8px; display: block; }
+.tc-stick .g.top { left: 50%; top: 2px; margin-left: -4px; }
+.tc-stick .g.bottom { left: 50%; bottom: 2px; margin-left: -4px; }
+.tc-stick .g.left { top: 50%; left: 2px; margin-top: -4px; }
+.tc-stick .g.right { top: 50%; right: 2px; margin-top: -4px; }
+.tc-stick[data-engaged] .g { opacity: 0; transition-duration: 0.12s; }
+.tc-stick .knob {
+  position: absolute; left: 50%; top: 50%; width: var(--tc-knob); height: var(--tc-knob); margin: calc(var(--tc-knob) / -2) 0 0 calc(var(--tc-knob) / -2); border-radius: 50%; pointer-events: none; will-change: transform;
+  box-sizing: border-box; background: radial-gradient(circle at 38% 30%, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.14) 60%, rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.32); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+.tc-stick .knob::after { content: ''; position: absolute; inset: -1px; border-radius: 50%; background: radial-gradient(circle at 38% 30%, rgba(255, 255, 255, 0.2), rgba(156, 194, 255, 0.3) 60%, rgba(156, 194, 255, 0.18)); opacity: 0; transition: opacity 0.2s ease; }
+.tc-stick[data-engaged] .knob::after { opacity: 1; transition-duration: 0.12s; }
+
+@media (hover: hover) and (pointer: fine) {
+  .tc-surface:hover { background-image: linear-gradient(rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.06)); }
+  .tc-stick:hover .g { color: var(--tc-ink); }
+}
+
+/* Reduced motion: opacity only, 120 ms; the knob lands without a glide. */
+@media (prefers-reduced-motion: reduce) {
+  .tc-item, .touch-ctl-pad[data-open] .tc-item { transition: opacity 0.12s ease; }
+  .tc-cap:has(.tc-half[data-down]) { scale: 1; transition: opacity 0.12s ease; }
+  .touch-ctl { transition: none; }
+}
+
+/* Above the row (the fallback), a sheet over the bar would sit under the pad: fade the pad. In the row the sheets open above it and nothing overlaps. */
+.touch-ctl.above.sheet-open .touch-ctl-pad { opacity: 0; transition: opacity 0.14s ease; }
+.touch-ctl.above.sheet-open .touch-ctl-pad, .touch-ctl.above.sheet-open .touch-ctl-pad * { pointer-events: none; }
+
+/* The bar's own button rules (bar.css: 44 px tall, 48 px at most) must not reach the pad's halves: they fill their pair. */
+.bar .tc-half { height: 100%; max-width: none; flex: 1 1 0; }
+
+/*
+ * In the bar's rows (the pad row above the bar, or the bar's own row on a wide screen) the pad has the lower bar's look (owner 2026-10-31,
+ * item E): no grey pills, plain icons at the bar's 22 px with its stroke (tablerIcons.ts) and colour, the bar's round hover and pressed
+ * fill, and a thin divider between the groups. The pairs drop their 1 px border: their outer size is
+ * set (border-box), so every size dockRow.ts models is unchanged and the halves gain the border's px (45 x 44 in the pad row from 400 px).
+ * A mount without a bar keeps the glass pills (.touch-ctl.above).
+ */
+.bar .tc-surface, .bar-padrow .tc-surface { background: none; border-color: transparent; }
+.bar .tc-cap, .bar-padrow .tc-cap { border-width: 0; }
+.bar .tc-half, .bar-padrow .tc-half { color: #e8ecf5; border-radius: 22px; }
+.bar .tc-half:last-child, .bar-padrow .tc-half:last-child { border-left: 0; }
+.bar .tc-half svg, .bar-padrow .tc-half svg { width: 22px; height: 22px; filter: none; }
+.bar .tc-half[data-down], .bar-padrow .tc-half[data-down] { background: rgba(169, 200, 245, 0.22); color: #fff; }
+.bar .tc-cap:has(.tc-half[data-down]), .bar-padrow .tc-cap:has(.tc-half[data-down]) { scale: 1; }
+.bar .tc-half:focus-visible, .bar-padrow .tc-half:focus-visible { outline: 2px solid #a9c8f5; outline-offset: -2px; }
+/* The pad group divider: 1 px, 10 px clear of the row's top and bottom. */
+.tc-sep { flex: none; width: 1px; align-self: stretch; margin: 10px 0; background: rgba(255, 255, 255, 0.14); pointer-events: none; }
+.touch-ctl.above .tc-sep { display: none; }
+/* The stick keeps its disc (a joystick needs its edge), drawn as a 1 px line like the dividers, a little brighter, with no fill; its chevrons in the bar's ink. */
+.bar .tc-stick, .bar-padrow .tc-stick { border-color: rgba(255, 255, 255, 0.22); }
+.bar .tc-stick .g, .bar-padrow .tc-stick .g { color: rgba(232, 236, 245, 0.7); }
+@media (hover: hover) and (pointer: fine) {
+  .bar .tc-surface:hover, .bar-padrow .tc-surface:hover { background-image: none; }
+  .bar .tc-half:hover, .bar-padrow .tc-half:hover { background-color: rgba(255, 255, 255, 0.08); }
+  .bar .tc-half[data-down]:hover, .bar-padrow .tc-half[data-down]:hover { background-color: rgba(169, 200, 245, 0.22); }
+}

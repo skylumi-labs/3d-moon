@@ -1,0 +1,36 @@
+{
+ "tier25cm_real": {
+  "trackMedianDepth": 0.10300590097904205,
+  "trackP25": 0.07154232636094093,
+  "controlMedianDepth": 0.017507877200841904,
+  "controlStd": 0.030411645770072937,
+  "controlP95": 0.0772708710283041,
+  "detectabilitySigma": 2.8113579750061035,
+  "fracTrackPiecesAboveControlP95": 0.6666666666666666,
+  "nTrack": 42,
+  "nControl": 96
+ },
+ "L0_0p6m_real": {
+  "trackMedianDepth": 0.10631391406059265,
+  "trackP25": 0.0725355464965105,
+  "controlMedianDepth": 0.03549184650182724,
+  "controlStd": 0.04337545484304428,
+  "controlP95": 0.12188409641385078,
+  "detectabilitySigma": 1.6327682733535767,
+  "fracTrackPiecesAboveControlP95": 0.42857142857142855,
+  "nTrack": 42,
+  "nControl": 96
+ },
+ "L0_0p6m_synth": {
+  "trackMedianDepth": 0.12241646647453308,
+  "trackP25": 0.08878996036946774,
+  "detectabilitySigmaVsRealControl": 2.004004806110872,
+  "fracTrackPiecesAboveRealControlP95": 0.5238095238095238
+ },
+ "tier25cm_synth": {
+  "trackMedianDepth": 0.13224142789840698,
+  "trackP25": 0.09586156159639359,
+  "detectabilitySigmaVsRealControl": 3.7726846999668284,
+  "fracTrackPiecesAboveRealControlP95": 0.8809523809523809
+ }
+}

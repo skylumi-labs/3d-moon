@@ -1,0 +1,103 @@
+/*
+ * The navigator lives in the bar's row (bar.css): prev, list and next buttons are items of that row, and the viewpoint's name is a small caption right over it
+ * (none before a viewpoint is chosen). Back gets its own reserved slot after a viewpoint is selected; when unavailable it keeps only its icon width.
+ * While a flight plays, the caption remains the picker and the duplicate list button leaves the row. Stop, pause, Back and both arrows stay visible;
+ * the toggle moves into More, while narrow rows move other bar items there too (dockRow.ts models the widths).
+ * Back stays so a journey that waits on its data (the Apollo 11 photograph) keeps a way back (V9, 7:24).
+ */
+.dock > .nav-caption { order: 1; }
+/* In lock style the centre lock names the feature in view, so the viewpoint's name over the bar goes (it named one feature while the lock named another, owner 2026-10-31).
+ * During a flight it stays: it is then the picker, the list button having left the row. */
+.label-style-lock .dock:not(:has(> .bar.flying)) > .nav-caption { display: none; }
+.dock > .bar-padrow { order: 2; margin-bottom: -3px; }
+.dock > .bar { order: 3; }
+.nav-pill { display: contents; }
+.nav-slider { display: none; }
+.nav-slider:has(.journey-scrub:not([hidden])) { display: flex; flex: 4 1 0; box-sizing: border-box; min-width: calc(2 * max(var(--bar-btn, 44px), 40px) + 6px + 96px); align-items: center; padding: 0 3px; }
+.bar.flying .nav-list { display: none; }
+.bar.flying { padding: 0; }
+@media (max-width: 359px) { .bar.flying [data-bar="more"] { display: none; } }
+.bar.flying .nav-prev { order: -1; }
+.nav-pill .journey-scrub { flex: 1 1 auto; width: auto; min-width: 0; padding: 0; gap: 0; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.nav-pill .journey-scrub .js-range { height: 36px; min-width: 96px; }
+.nav-pill .journey-scrub .js-label, .nav-pill .journey-scrub .js-read { display: none; }
+.nav-pill .journey-scrub .js-pause { flex: none; width: max(var(--bar-btn, 44px), 40px); height: max(var(--bar-btn, 44px), 40px); padding: 0; border-radius: 999px; font-size: 0.875rem; color: inherit; background: none; border: 0; cursor: pointer; }
+.nav-pill .journey-scrub .js-pause:hover { background: rgba(255, 255, 255, 0.08); }
+.nav-pill .journey-scrub .js-pause:focus-visible { outline: 2px solid #a9c8f5; outline-offset: -2px; }
+
+/* The way back: an icon in the row, in the blue outline of an action. */
+.bar .nav-return { flex: none; width: max(var(--bar-btn, 44px), 40px); max-width: 48px; height: max(var(--bar-btn, 44px), 40px); border-radius: 999px; color: #a9c8f5; border: 1px solid rgba(169, 200, 245, 0.5); background: rgba(169, 200, 245, 0.14); }
+.bar .nav-return:hover { background: rgba(169, 200, 245, 0.24); }
+.bar .nav-return[hidden] { display: none; }
+.bar .nav-return:not(.available) { visibility: hidden; pointer-events: none; width: max(var(--bar-btn, 44px), 40px); max-width: 48px; padding: 0; }
+.bar .nav-return .nav-return-word { display: none; font-size: 0.8125rem; font-weight: 600; margin-left: 4px; }
+.bar .nav-return { width: max(var(--bar-btn, 44px), 40px); max-width: 48px; padding: 0; }
+@media (min-width: 900px) {
+  .bar .nav-return { width: auto; max-width: none; padding: 0 14px 0 10px; }
+  .bar .nav-return .nav-return-word { display: inline; }
+  .bar .nav-return:not(.available) { width: 44px; padding: 0; }
+  .bar .nav-return:not(.available) .nav-return-word { display: none; }
+}
+.bar .nav-stop { flex: none; width: max(var(--bar-btn, 44px), 40px); height: max(var(--bar-btn, 44px), 40px); border-radius: 999px; color: inherit; }
+.bar .nav-stop:hover { background: rgba(255, 255, 255, 0.08); }
+.bar .nav-stop:focus-visible { outline: 2px solid #a9c8f5; outline-offset: -2px; }
+.bar .nav-stop[hidden] { display: none; }
+.bar .nav-list.open { background: rgba(169, 200, 245, 0.22); color: #fff; }
+
+/* The caption over the row: the viewpoint's name and where it is in the list, one muted line (two at large text sizes: the count wraps under the name before the name is cut). */
+.nav-caption {
+  position: relative; margin: 0; border: 0; background: none; font-family: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; text-align: left;
+  box-sizing: border-box; max-width: min(100%, 36rem); display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 0 8px; padding: 0 10px;
+  font-size: 0.75rem; line-height: 1.3; color: rgba(232, 236, 245, 0.8); text-shadow: 0 0 3px #000, 0 1px 8px #000, 0 0 14px rgba(0, 0, 0, 0.85);
+}
+.nav-caption[hidden] { display: none; }
+/* A comfortable tap area without growing the dock: the button's box reaches over the gap above and a little under it. */
+.nav-caption::after { content: ''; position: absolute; left: 0; right: 0; top: -14px; bottom: -4px; }
+.nav-caption:focus-visible { outline: 2px solid #a9c8f5; outline-offset: 2px; border-radius: 8px; }
+.nav-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; color: #f1f4fb; }
+.nav-count { flex: none; font: inherit; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.nav-dots { flex: none; display: inline-flex; gap: 4px; align-self: center; }
+.nav-dots[hidden] { display: none; }
+.nav-dots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(232, 236, 245, 0.4); }
+.nav-dots i.on { background: #a9c8f5; }
+.dock:has(.nav-pill.loading) .nav-count { color: #a9c8f5; }
+
+/* The filmstrip: a card per viewpoint (a still, the name, a few words); the current one outlined. Cards widen with the text size (8.25rem is 132 px at 100%). */
+.nav-col { flex: none; width: var(--card-w, max(132px, 8.25rem)); display: grid; grid-template-columns: minmax(0, 100%); gap: 4px; align-content: start; scroll-snap-align: center; }
+.bar-sheet.viewpoints-sheet .nav-card {
+  display: grid; gap: 6px; align-content: start; justify-items: stretch; width: 100%; min-height: 0; margin: 0; padding: 4px 5px 6px; text-align: left;
+  background: none; border: 0; border-radius: 12px; white-space: normal;
+}
+.nav-pic { position: relative; display: block; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 10px; border: 2px solid transparent; box-sizing: border-box; background: linear-gradient(160deg, #1c2335, #07090d); }
+.nav-pic img { display: block; width: 100%; height: 100%; object-fit: cover; -webkit-user-drag: none; }
+.nav-pic.no-img::after { content: attr(data-name); position: absolute; inset: 0; display: grid; place-items: end start; padding: 6px 8px; font-size: 0.75rem; font-weight: 600; opacity: 0.85; }
+/* Keyboard focus marks the picture, like the current card: an outline on the whole button ran through the title and caption. */
+.bar-sheet.viewpoints-sheet .nav-card:focus-visible { outline: none; }
+.bar-sheet.viewpoints-sheet .nav-card:focus-visible .nav-pic { outline: 2px solid #a9c8f5; outline-offset: 2px; }
+.nav-card.cur .nav-pic { border-color: #a9c8f5; box-shadow: 0 0 0 1px rgba(169, 200, 245, 0.5); }
+.nav-card:hover .nav-pic { border-color: rgba(169, 200, 245, 0.6); }
+.nav-card b { font-size: 0.8125rem; font-weight: 600; line-height: 1.2; }
+.nav-card small { max-width: 100%; font-size: 0.6875rem; line-height: 1.25; opacity: 0.7; }
+.nav-card .nav-views { position: absolute; right: 4px; bottom: 4px; padding: 2px 6px; border-radius: 8px; font-size: 0.6875rem; background: rgba(10, 12, 16, 0.7); }
+
+/* Sub-views of the current entry, one tap each, under its card. */
+/* The row may run past its card into the empty space under the neighbouring cards (their captions end above it), so every sub-view shows at once;
+ * past min(640px, 86vw) it wraps. */
+.nav-subs { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 4px; width: max-content; max-width: min(640px, 86vw); padding: 2px 0 3px; }
+.bar-sheet.viewpoints-sheet .nav-subs > button {
+  flex: none; min-height: 28px; width: auto; margin: 0; padding: 0 9px; border-radius: 14px; font-size: 0.6875rem; display: block; white-space: nowrap;
+}
+
+/* Tour card in the list: the row steps, so the card keeps only the caption, the loading line and Retry. */
+.viewpoints-journeys .tour-ctl, .viewpoints-journeys .tour-count, .viewpoints-journeys .tour-bar { display: none; }
+/* The caption and the pressed card already say what and where; the card is only there for a failed load's Retry. */
+.viewpoints-journeys .tour-head, .viewpoints-journeys .tour-cap, .viewpoints-journeys .tour-watch, .viewpoints-journeys .tour-progress, .viewpoints-journeys .tour-stale { display: none; }
+.viewpoints-journeys:not(:has(.tour-retry:not([hidden]))) { display: none; }
+/* Cards widen with the text size but never past a fifth of the screen, so a 1280 px projector at 200% still shows four or more. */
+@media (min-width: 900px) { .viewpoints-sheet { --card-w: clamp(132px, 10.5rem, 20vw); } }
+
+/* The filmstrip scrolls (.viewpoints-list): a thin themed scrollbar (kept visible, it shows that cards wait off screen) and 10 px edge fades, which is the list's own side padding, so a card at rest is never dimmed. */
+.viewpoints-list { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.35) transparent; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10px, #000 calc(100% - 10px), transparent); mask-image: linear-gradient(90deg, transparent, #000 10px, #000 calc(100% - 10px), transparent); }
+.viewpoints-list::-webkit-scrollbar { height: 6px; }
+.viewpoints-list::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.35); border-radius: 3px; }
+.viewpoints-list::-webkit-scrollbar-track { background: transparent; }

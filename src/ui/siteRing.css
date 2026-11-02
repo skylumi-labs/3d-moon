@@ -1,0 +1,11 @@
+/* Apollo 11's ring: 28 px circle centred on the lander, its label to the lower right. */
+.site-ring { position: absolute; left: 0; top: 0; width: 0; height: 0; pointer-events: none; z-index: 2; will-change: transform; }
+.site-ring[hidden] { display: none; }
+.site-ring::before {
+  content: ''; position: absolute; left: -14px; top: -14px; width: 28px; height: 28px; box-sizing: border-box; border-radius: 50%;
+  border: 1.5px solid #f1f4fb; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55), 0 0 8px rgba(0, 0, 0, 0.6);
+}
+.site-ring span {
+  position: absolute; left: 20px; top: 8px; white-space: nowrap; font-size: 0.75rem; letter-spacing: 0.02em; color: #f1f4fb;
+  text-shadow: 0 0 3px #000, 0 1px 8px #000, 0 0 14px rgba(0, 0, 0, 0.85);
+}

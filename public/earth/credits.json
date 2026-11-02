@@ -1,0 +1,108 @@
+{
+  "note": "Earth maps for the Moon site, built by scripts/build-earth-maps.mjs. All sources are NASA imagery, which NASA does not copyright (NASA media usage guidelines); the credits below are the ones the source pages ask for.",
+  "grid": "2048 x 1024 plate carree, 180 W at the left edge, 90 N at the top",
+  "sources": [
+    {
+      "id": "bmng",
+      "title": "Blue Marble: Next Generation with Topography and Bathymetry (monthly, 2004), and the base map without relief shading (water pixels)",
+      "credit": "NASA Earth Observatory",
+      "creator": "Reto Stöckli, NASA Earth Observatory (NASA Goddard Space Flight Center)",
+      "citation": "R. Stöckli, E. Vermote, N. Saleous, R. Simmon and D. Herring (2005). The Blue Marble Next Generation - A true color earth dataset including seasonal dynamics from MODIS. NASA Earth Observatory.",
+      "licence": "NASA imagery, not copyrighted; credit requested (\"please credit NASA Earth Observatory\").",
+      "page": "https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/",
+      "used_for": "albedo-01..12.jpg"
+    },
+    {
+      "id": "clouds",
+      "title": "Blue Marble: Clouds (cloud_combined_2048.jpg, MODIS, 2002)",
+      "credit": "NASA Goddard Space Flight Center Image by Reto Stöckli (land surface, shallow water, clouds). Enhancements by Robert Simmon (ocean color, compositing, 3D globes, animation). Data and technical support: MODIS Land Group; MODIS Science Data Support Team; MODIS Atmosphere Group; MODIS Ocean Group.",
+      "licence": "NASA imagery, not copyrighted; credit requested.",
+      "page": "https://visibleearth.nasa.gov/images/57747/blue-marble-clouds",
+      "used_for": "clouds.jpg"
+    },
+    {
+      "id": "black-marble",
+      "title": "Earth at Night (Black Marble) 2016, greyscale, 3 km",
+      "credit": "NASA Earth Observatory images by Joshua Stevens, using Suomi NPP VIIRS data from Miguel Román, NASA Goddard Space Flight Center.",
+      "licence": "NASA imagery, not copyrighted; credit requested.",
+      "page": "https://science.nasa.gov/earth/earth-observatory/earth-at-night/maps/",
+      "used_for": "lights.jpg"
+    },
+    {
+      "id": "water-mask",
+      "title": "MODIS land-water mask (MOD44W, 250 m) via NASA GIBS (layer MODIS_Water_Mask)",
+      "credit": "NASA Global Imagery Browse Services (GIBS); MOD44W land-water mask (Carroll et al. 2009, \"A new global raster water mask at 250 m resolution\", Int. J. Digital Earth 2, 291-308).",
+      "licence": "NASA Earth science data, open data policy; acknowledgement requested.",
+      "page": "https://gibs.earthdata.nasa.gov/",
+      "used_for": "water.png, and to choose between the shaded and unshaded Blue Marble per pixel"
+    }
+  ],
+  "maps": {
+    "albedo-MM.jpg": "Surface albedo per month (MM = 01..12), linear, sRGB-encoded: decode as sRGB to get albedo. Land from the relief-shaded map (the shading is baked in, lit from a fixed direction); water from the unshaded map. The inversion of the BMNG display stretch is stated in the script.",
+    "clouds.jpg": "Cloud cover 0..1, stored linearly (not sRGB). c = (DN/255)^1. A single moment in 2002, not the current weather.",
+    "lights.jpg": "Night-light radiance relative to the brightest 3 km Black Marble pixel, sRGB-encoded. The absolute scale is a model (see the script and src/earth/earthShader.ts).",
+    "water.png": "Fraction of each pixel that is water (oceans, seas, lakes), 0..1, linear."
+  },
+  "files": [
+    {
+      "file": "water.png",
+      "bytes": 218596
+    },
+    {
+      "file": "albedo-01.jpg",
+      "bytes": 257979
+    },
+    {
+      "file": "albedo-02.jpg",
+      "bytes": 253681
+    },
+    {
+      "file": "albedo-03.jpg",
+      "bytes": 248203
+    },
+    {
+      "file": "albedo-04.jpg",
+      "bytes": 241712
+    },
+    {
+      "file": "albedo-05.jpg",
+      "bytes": 239815
+    },
+    {
+      "file": "albedo-06.jpg",
+      "bytes": 237521
+    },
+    {
+      "file": "albedo-07.jpg",
+      "bytes": 235778
+    },
+    {
+      "file": "albedo-08.jpg",
+      "bytes": 237441
+    },
+    {
+      "file": "albedo-09.jpg",
+      "bytes": 238350
+    },
+    {
+      "file": "albedo-10.jpg",
+      "bytes": 241128
+    },
+    {
+      "file": "albedo-11.jpg",
+      "bytes": 248501
+    },
+    {
+      "file": "albedo-12.jpg",
+      "bytes": 255831
+    },
+    {
+      "file": "clouds.jpg",
+      "bytes": 525919
+    },
+    {
+      "file": "lights.jpg",
+      "bytes": 98230
+    }
+  ]
+}

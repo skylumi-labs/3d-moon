@@ -1,0 +1,17 @@
+/* The zoom tape (SkyLumi's magnification tape, ported): left edge, vertically centred, only while the zoom moves. Never takes a pointer. */
+.zoom-tape {
+  position: absolute; top: 0; bottom: 0; left: env(safe-area-inset-left, 0px); width: 160px; z-index: 2;
+  pointer-events: none; user-select: none; -webkit-user-select: none; overflow: hidden; text-shadow: none;
+}
+.zoom-tape svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.zoom-tape text { text-shadow: 0 1px 2px rgba(0, 0, 0, .85); }
+.zoom-tape [data-floor-marker] { color: #ffe2b1; transform-box: fill-box; transform-origin: center; }
+.zoom-tape [data-floor-marker].pulse, .zoom-tape [data-reading-bar].pulse { animation: zoom-floor-pulse 250ms ease-out; transform-box: fill-box; transform-origin: center; }
+@keyframes zoom-floor-pulse {
+  0% { opacity: .45; scale: .82; }
+  55% { opacity: 1; scale: 1.14; }
+  100% { opacity: 1; scale: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zoom-tape [data-floor-marker].pulse, .zoom-tape [data-reading-bar].pulse { animation: none; }
+}

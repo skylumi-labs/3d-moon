@@ -1,0 +1,50 @@
+/* Pins on the Moon: a dot and a label at a selenographic point. They step aside while the camera moves. */
+.pins { position: absolute; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; transition: opacity 200ms ease; }
+.pins.away { opacity: 0; }
+.pins.away .pin { pointer-events: none; }
+.pin {
+  position: absolute; left: 0; top: 0; margin: 0; padding: 0; border: 0; background: none; color: #f1f4fb; cursor: pointer;
+  display: flex; align-items: center; gap: 6px; font: inherit; font-size: 0.75rem; line-height: 1; letter-spacing: 0.02em;
+  pointer-events: auto; will-change: transform; text-shadow: 0 0 3px #000, 0 1px 8px #000, 0 0 14px rgba(0, 0, 0, 0.85); -webkit-tap-highlight-color: transparent;
+  /* A pinch whose fingers land on pins must not zoom the page (the canvas is touch-action: none, a pin was not). */
+  touch-action: none;
+  /* A 44 px target around the dot without moving the dot: the label sits to its right. */
+  min-height: 44px; margin-top: -22px; margin-left: -22px; padding-left: 15px; padding-right: 8px; box-sizing: border-box;
+}
+.pin[hidden] { display: none; }
+.pin i {
+  flex: none; width: 14px; height: 14px; border-radius: 50%; box-sizing: border-box;
+  background: rgba(241, 244, 251, 0.2); border: 2px solid #f1f4fb; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.pin span { white-space: nowrap; }
+/* Label on the left (the right edge has no room): the dot stays on the point. */
+.pin.left { flex-direction: row-reverse; margin-left: 0; padding-left: 8px; padding-right: 15px; }
+.pin.dark { opacity: 0.6; }
+.pin.dark i { border-style: dashed; }
+.pin:hover i, .pin:focus-visible i { background: #a9c8f5; border-color: #fff; }
+.pin:focus-visible { outline: 2px solid #a9c8f5; outline-offset: -4px; border-radius: 22px; }
+
+/* Viewpoints: a strip of cards (navigator.css) above the row; swipe it, or Tab and the arrow keys. It takes what the caption and the row leave, down to 48px under the top. */
+.bar-sheet.viewpoints-sheet {
+  width: min(45rem, 100%); max-height: min(calc(100dvh - 48px - 64px - var(--nav-h, 30px) - env(safe-area-inset-bottom, 0px)), 26.25rem); overflow: hidden; gap: 6px; padding: 10px 0 8px; display: grid;
+}
+.viewpoints-sheet > .viewpoints-journeys { margin: 0 10px; }
+.viewpoints-journeys { padding: 8px 0; border-block: 1px solid rgba(255, 255, 255, 0.1); }
+.viewpoints-journeys .tours.in-viewpoints { position: static; display: grid; gap: 8px; padding: 0; }
+.viewpoints-journeys .tours.in-viewpoints .tour-card { position: static; transform: none; width: 100%; max-height: none; }
+.viewpoints-journeys .tours.in-viewpoints .tour-row { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; }
+.viewpoints-journeys .tours.in-viewpoints .tour-archive-tag { display: none; }
+.viewpoints-journeys .tours.in-viewpoints .tour-row button { flex: none; min-height: 40px; padding-inline: 13px; font-size: 0.75rem; }
+.viewpoints-sheet > .tours { display: contents; }
+@media (prefers-reduced-motion: reduce) { .pins { transition: none; } }
+
+/* The shared sheet layout must not resurrect hidden Retry, Stop or Back-to-now controls. */
+.bar-sheet.viewpoints-sheet button[hidden] { display: none; }
+
+/* The strip: one row of cards, snapping, scrolling sideways. A finger pans it (touch-action: pan-x); a mouse drags it (navigator.ts, snapping off meanwhile); its whole box takes the pointer, gaps included, so no press reaches the Moon. */
+.viewpoints-list { display: flex; gap: 10px; align-items: flex-start; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scroll-padding-inline: 10px; padding: 2px 10px 6px; -webkit-overflow-scrolling: touch; touch-action: pan-x; pointer-events: auto; cursor: grab; user-select: none; -webkit-user-select: none; }
+.viewpoints-list.dragging { scroll-snap-type: none; cursor: grabbing; }
+.viewpoints-journeys { border-block: 0; padding: 0; }
+.viewpoints-journeys .tours.in-viewpoints .tour-row { display: flex; }
+.viewpoints-journeys .tours.in-viewpoints .tour-row:empty, .viewpoints-journeys .tours.in-viewpoints .tour-row:not(:has(.back-now:not([hidden]))) { display: none; }
+.viewpoints-journeys .tours.in-viewpoints .tour-card[hidden] { display: none; }

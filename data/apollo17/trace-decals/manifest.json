@@ -1,0 +1,191 @@
+{
+ "schema": "a17-trace-decals/1",
+ "note": "S = modelled surface detail; position of the traces is M (25 cm image) with sigma ~0.5 m; not a measurement of any imprint",
+ "resM": 0.05,
+ "tilePx": 640,
+ "tileM": 32.0,
+ "originTopLeftTmHaase": [
+  1824.0,
+  612320.0
+ ],
+ "originTopLeftEnPatch": [
+  -220.902,
+  64.93
+ ],
+ "gridTiles": [
+  12,
+  4
+ ],
+ "layout": "per tile: int8 height [640x640, row-major from the top-left, x east, rows south] then int8 albedo [640x640]; gzip",
+ "heightUnitM": 0.00025,
+ "albedoUnitLog2": 0.0078125,
+ "heightMeaning": "metres relative to the DTM surface, negative = depression; wheel rut = across-chevron mean, boot ribs box-filtered to 5 cm (fine chevrons and ribs come from the stamp library)",
+ "albedoMeaning": "log2 multiplier of the surface albedo, negative = darker",
+ "amplitudes": {
+  "scaleK": 0.8,
+  "roverCore": -0.0795354776335011,
+  "roverHalo": -0.10225503055424078,
+  "footCore": 0.021216013161919317,
+  "footHalo": -0.11724288589335115,
+  "albedoSigmaLn": 0.3
+ },
+ "geometry": "single line on the traced centre (the pair hypothesis fails the arbiter)",
+ "tiles": [
+  {
+   "file": "d_1_0.bin.gz",
+   "tx": 1,
+   "ty": 0,
+   "bytes": 13414,
+   "sha256": "17003103cca68c6796530f995f3b7736b70738a384767c384a53f64a5ec5c7f0"
+  },
+  {
+   "file": "d_2_0.bin.gz",
+   "tx": 2,
+   "ty": 0,
+   "bytes": 12595,
+   "sha256": "e85b3395c3c9b75499189f0b603cf2fb6cbac82bf6a34f9cf8a7d9fa338c3678"
+  },
+  {
+   "file": "d_3_0.bin.gz",
+   "tx": 3,
+   "ty": 0,
+   "bytes": 4789,
+   "sha256": "134a0f8669e62319c9187ae0e1ebd26d8158611a2a2593f1c14ca26f3e7f95fe"
+  },
+  {
+   "file": "d_5_0.bin.gz",
+   "tx": 5,
+   "ty": 0,
+   "bytes": 10939,
+   "sha256": "77f6b1afe69ed38cacf7431878296ed03b3433f45584f48c505f2e2a1e49b66a"
+  },
+  {
+   "file": "d_6_0.bin.gz",
+   "tx": 6,
+   "ty": 0,
+   "bytes": 6602,
+   "sha256": "fef0ee0a5cf25cc46ed363d3ce6889ca5551a8bb7aa066c394847f6b9104cc08"
+  },
+  {
+   "file": "d_7_0.bin.gz",
+   "tx": 7,
+   "ty": 0,
+   "bytes": 1188,
+   "sha256": "be55261a3a2c3be2f82781558e361bb66d3b3b1982d61f910569dce4c52b2ca0"
+  },
+  {
+   "file": "d_8_0.bin.gz",
+   "tx": 8,
+   "ty": 0,
+   "bytes": 870,
+   "sha256": "7b5272c81967795b8fbb65607ab30c46aacf8e42f3ab4020275f321844d6db07"
+  },
+  {
+   "file": "d_10_0.bin.gz",
+   "tx": 10,
+   "ty": 0,
+   "bytes": 6340,
+   "sha256": "1abe82c768e1860fe7543d7d4278dce2ec9ff53ed4d4cc74901b3936f7ed3ad9"
+  },
+  {
+   "file": "d_2_1.bin.gz",
+   "tx": 2,
+   "ty": 1,
+   "bytes": 8058,
+   "sha256": "93fcecf0d4a4192bc932dac202db3189239328c5c7644e308e6549ad7116b63a"
+  },
+  {
+   "file": "d_3_1.bin.gz",
+   "tx": 3,
+   "ty": 1,
+   "bytes": 11149,
+   "sha256": "52161faeb5d0b5ca2914d7c4c458c0ad351cc7864477273dd61d6d226d5e7284"
+  },
+  {
+   "file": "d_4_1.bin.gz",
+   "tx": 4,
+   "ty": 1,
+   "bytes": 15807,
+   "sha256": "367ed3e97e4c14e899bf54e234bca8b90400e2285ce654cd0c47fc64712e76fd"
+  },
+  {
+   "file": "d_5_1.bin.gz",
+   "tx": 5,
+   "ty": 1,
+   "bytes": 18576,
+   "sha256": "d15e39ab561fcfbd32e10a0f75e6eee9dace692873f9d29704091c00344fdb94"
+  },
+  {
+   "file": "d_6_1.bin.gz",
+   "tx": 6,
+   "ty": 1,
+   "bytes": 9394,
+   "sha256": "a25f045fa22f2b184f22b9eb6c8f08e64823b58c5eaa3fafa0160459cb22bcf6"
+  },
+  {
+   "file": "d_7_1.bin.gz",
+   "tx": 7,
+   "ty": 1,
+   "bytes": 29795,
+   "sha256": "d4f12957ab34ad37ba3ad2bf4f3eadb7a051524eafbf76ae92877a2e1957688b"
+  },
+  {
+   "file": "d_8_1.bin.gz",
+   "tx": 8,
+   "ty": 1,
+   "bytes": 28471,
+   "sha256": "34e82967ca5dfd5a31b091d96b450b962ff2c2caedde58a826f9b8f97b1468d0"
+  },
+  {
+   "file": "d_9_1.bin.gz",
+   "tx": 9,
+   "ty": 1,
+   "bytes": 17610,
+   "sha256": "cd3376e3b240749daff097c2a1619f3b94150ac5d49a577b1ffffffb5b97295f"
+  },
+  {
+   "file": "d_10_1.bin.gz",
+   "tx": 10,
+   "ty": 1,
+   "bytes": 11188,
+   "sha256": "59825fdab62900838a04752abb6f289cba037a723c982d8b2ab0c025f1fa442f"
+  },
+  {
+   "file": "d_5_2.bin.gz",
+   "tx": 5,
+   "ty": 2,
+   "bytes": 919,
+   "sha256": "ef85bf641bef432aa154c0cd673e66138df5dadf8d97bf24e906d66496bf6e05"
+  },
+  {
+   "file": "d_6_2.bin.gz",
+   "tx": 6,
+   "ty": 2,
+   "bytes": 4290,
+   "sha256": "82b4e0b7c93331abea6e72bc78ba93cbd6cd4638f1d1e4b6fce62d81e6615017"
+  },
+  {
+   "file": "d_7_2.bin.gz",
+   "tx": 7,
+   "ty": 2,
+   "bytes": 11172,
+   "sha256": "75154257fbe48c0d35fef06aa9664f8cb67ec9d9a625362298e64947e2f6eaee"
+  },
+  {
+   "file": "d_6_3.bin.gz",
+   "tx": 6,
+   "ty": 3,
+   "bytes": 2691,
+   "sha256": "c29c555e2b94d0f76e927b740ad78a8d798aa4745ffb31698b58f4baa6d579bc"
+  },
+  {
+   "file": "d_7_3.bin.gz",
+   "tx": 7,
+   "ty": 3,
+   "bytes": 3258,
+   "sha256": "a0d4ffa1914fa3970042b228e3d149302f78521c18ae40d1a6a3d1aea4f306d2"
+  }
+ ],
+ "totalBytes": 229115,
+ "emptyTilesSkipped": 26
+}

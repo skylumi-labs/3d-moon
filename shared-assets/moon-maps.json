@@ -1,0 +1,35 @@
+{
+  "size": [
+    4096,
+    2048
+  ],
+  "lonRangeDeg": [
+    -180,
+    180
+  ],
+  "projection": "equirectangular, whole globe, east longitude increasing to the right, north up",
+  "color": {
+    "file": "moon-color-4k.jpg",
+    "jpegQuality": 88
+  },
+  "height": {
+    "file": "moon-height-4k.bin.gz",
+    "stepM": 4,
+    "reference": "metres above a 1737.4 km sphere",
+    "measuredM": [
+      -9044,
+      10628.5
+    ],
+    "encoding": "'MHT1', u32 width, u32 height, f32 step, f32 lon span; gradient-predicted residuals, zig-zag u16, high-byte plane then low-byte plane; gzip"
+  },
+  "source": {
+    "site": "https://svs.gsfc.nasa.gov/4720/",
+    "files": [
+      "lroc_color_poles_4k.tif",
+      "ldem_16_uint.tif"
+    ],
+    "credit": "NASA's Scientific Visualization Studio (LROC WAC colour: LRO Camera team / ASU; elevation: LOLA)",
+    "licence": "Public domain"
+  },
+  "builtBy": "the project's 4k map build"
+}
