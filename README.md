@@ -7,6 +7,8 @@
 [![CI](https://github.com/skylumi-labs/3d-moon/actions/workflows/ci.yml/badge.svg)](https://github.com/skylumi-labs/3d-moon/actions/workflows/ci.yml)
 [![License: AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue.svg)](LICENSE)
 
+https://github.com/user-attachments/assets/bfb3b48f-dd6e-42d3-b3b0-d6639ba7ed22
+
 ## Why I built this
 
 The Moon is one of the most thoroughly mapped places in the solar system.
