@@ -19,9 +19,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@sentry/browser": "10.76.2",
+    "@sentry/browser": "10.78.0",
     "astronomy-engine": "2.1.19",
-    "posthog-js": "1.438.21",
+    "posthog-js": "1.442.1",
     "three": "0.186.1"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "sharp": "^0.35.5",
     "tsx": "^4.23.15",
     "typescript": "6.0.3",
-    "typescript-eslint": "^8.72.0",
+    "typescript-eslint": "^8.72.1",
     "vite": "8.3.5"
   },
   "homepage": "https://skylumi.org/3d-moon/",
